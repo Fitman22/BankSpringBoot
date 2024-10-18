@@ -2,6 +2,7 @@ package com.example.services;
 
 import com.example.models.Cuenta;
 import com.example.models.Transaccion;
+import com.example.models.TipoTransaccion;
 import com.example.repositoryes.CuentaRepository;
 import com.example.repositoryes.TransaccionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
