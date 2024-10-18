@@ -9,31 +9,35 @@ public class Transaccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long transaccionId; // Cambia el nombre a transaccionId para que coincida con la tabla
 
     @ManyToOne
-    @JoinColumn(name = "id_cuenta_origen")
+    @JoinColumn(name = "cuenta_origen_id") // Asegúrate de que coincida con el nombre de columna en la base de datos
     private Cuenta cuentaOrigen;
 
     @ManyToOne
-    @JoinColumn(name = "id_cuenta_destino")
+    @JoinColumn(name = "cuenta_destino_id") // Asegúrate de que coincida con el nombre de columna en la base de datos
     private Cuenta cuentaDestino;
 
     private Double monto;
 
-    @Enumerated(EnumType.STRING)
+    @JoinColumn(name = "tipo_transaccion_id") // Asegúrate de que coincida con el nombre de columna en la base de datos
     private TipoTransaccion tipoTransaccion;
 
     private LocalDateTime fechaTransaccion;
 
+    private Boolean estado; // Añadir estado para que coincida con la tabla
+
+    private String descripcion; // Añadir descripcion para que coincida con la tabla
+
     // Getters y setters
 
-    public Long getId() {
-        return id;
+    public Long getTransaccionId() {
+        return transaccionId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTransaccionId(Long transaccionId) {
+        this.transaccionId = transaccionId;
     }
 
     public Cuenta getCuentaOrigen() {
@@ -75,5 +79,20 @@ public class Transaccion {
     public void setFechaTransaccion(LocalDateTime fechaTransaccion) {
         this.fechaTransaccion = fechaTransaccion;
     }
-}
 
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+}
