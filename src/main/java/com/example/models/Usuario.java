@@ -1,6 +1,6 @@
 package com.example.models;
 import java.time.LocalDateTime;
-import java.time.LocalDateTime;
+
 
 import jakarta.persistence.*;
 
@@ -19,8 +19,8 @@ public class Usuario {
 	private String nombre_usuario;
 
 
-	@Column(name="contraseña_hash")
-	private String contrasena_hash;
+	@Column(name="password_hash")
+	private String password_hash;
 
 
 	@Column(name = "email")
@@ -36,11 +36,11 @@ public class Usuario {
 
 	public Usuario() {}
 
-	public Usuario(int usuario_id, String nombre_usuario, String email, String contrasena_hash, String telefono, LocalDateTime fecha_registro) {
+	public Usuario(int usuario_id, String nombre_usuario, String email, String password_hash, String telefono, LocalDateTime fecha_registro) {
 		this.usuario_id = usuario_id;
 		this.nombre_usuario = nombre_usuario;
 		this.email = email;
-		this.contrasena_hash = contrasena_hash;
+		this.password_hash = password_hash;
 		this.telefono = telefono;
 		this.fecha_registro = fecha_registro;
 	}
@@ -54,8 +54,8 @@ public class Usuario {
 		return nombre_usuario;
 	}
 
-	public String getContrasena_hash() {
-		return contrasena_hash;
+	public String getPassword_hash() {
+		return password_hash;
 	}
 
 	public String getEmail() {
@@ -84,7 +84,7 @@ public class Usuario {
 	}
 
 	public void setContrasena_hash(String contrasena_hash) {
-		this.contrasena_hash = contrasena_hash;
+		this.password_hash = password_hash;
 	}
 
 	public void setEmail(String email) {

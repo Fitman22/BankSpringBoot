@@ -1,6 +1,8 @@
 package com.example.services;
 
+import com.example.models.LoginDto;
 import com.example.models.Usuario;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -11,4 +13,6 @@ public interface IUsuario {
 	Usuario buscarUsuarioPorId(int id);
 	int borrarUsuario(Usuario usuario);
 
+	int login(LoginDto loginDto);
+	ResponseEntity<?> ingresar(LoginDto usuarioDto);
 }
