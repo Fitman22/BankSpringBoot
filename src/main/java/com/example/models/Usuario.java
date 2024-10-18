@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -30,7 +31,7 @@ public class Usuario {
     private String telefono;
 
     @Column(name = "fecha_registro")
-    private String fecha;
+    private Date fecha;
 
 }
 
