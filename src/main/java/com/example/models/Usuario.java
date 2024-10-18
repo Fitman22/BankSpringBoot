@@ -12,25 +12,25 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name=Usuario.TABLE_NAME)
 public class Usuario {
-    public static final String TABLE_NAME = "usuario";
+    public static final String TABLE_NAME = "usuarios";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre_usuario")
     private String nombre;
 
-    @Column(name = "nombreUsuario")
-    private String nombreUsuario;
-
-    @Column(name = "password")
-    private String password;
+    @Column(name = "contraseña_hash")
+    private String contrasena;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "numeroDocumento")
-    private String numeroDocumento;
+    @Column(name = "telefono")
+    private String telefono;
+
+    @Column(name = "fecha_registro")
+    private String fecha;
 
 }
 

@@ -36,10 +36,9 @@ public class UsuarioController {
         Usuario obj = usuarioService.buscarUsuario(usuario.getId());
         if(obj != null){
             obj.setEmail(usuario.getEmail());
-            obj.setNombreUsuario(usuario.getNombreUsuario());
             obj.setNombre(usuario.getNombre());
-            obj.setNumeroDocumento(usuario.getNumeroDocumento());
-            obj.setPassword(usuario.getPassword());
+            obj.setContrasena(usuario.getContrasena());
+            obj.setTelefono(usuario.getTelefono());
             usuarioService.nuevoUsuario(obj);
         }else{
             return new ResponseEntity<>(obj,HttpStatus.INTERNAL_SERVER_ERROR);
