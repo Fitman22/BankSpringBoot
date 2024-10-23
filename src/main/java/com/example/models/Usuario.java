@@ -19,7 +19,7 @@ public class Usuario {
 	private String nombre_usuario;
 
 
-	@Column(name="password_hash")
+	@Column(name="contraseña_hash")
 	private String password_hash;
 
 
