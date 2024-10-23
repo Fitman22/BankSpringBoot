@@ -1,7 +1,10 @@
-const btn= document.getElementById('menu-btn');
+const btn= document.getElementById('hamburger-menu-btn');
 const menu=document.getElementById('mobile-menu')
-const loginBtn=document.getElementById('backdrop-btn')
+const loginBtn=document.getElementById('login-btn')
 const backdrop=document.getElementById('backdrop')
+const cardLog= document.getElementById('log-in-card')
+
+const loginRequest= document.getElementById('btn-log')
 
 
 
@@ -18,18 +21,64 @@ menu.classList.toggle('hidden')
 
 }
 
-/* Close Mobile Menu When resize to MD   */
+/*  Log-in BTN  */
 
 
 
-/* Backdrop */
+loginBtn.addEventListener('click',()=>cardLog.classList.toggle('hidden'))
 
 
-loginBtn.addEventListener('click', showModal)
 
+//Validar Loggin Function
 
-function showModal(e){
-    backdrop.classList.toggle('hidden')
+function validarLogin(){
 
-    
+const username=document.getElementById('username');
+const password=document.getElementById('password');
+
+let dataRequest= {
+    nombre_usuario: username.value,
+    password_hash: password.value
 }
+
+fetch('http://localhost:8095/login',{
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dataRequest)
+
+}).then(response=>response.json()).then(response=>{
+
+    console.log(response)
+    console.log(response.statusCode)
+    if(response.statusCode==200 && response.Usuario.rol=='USER'){
+        console.log(response)
+        localStorage.setItem('userData',JSON.stringify(response))
+        window.location.href="/Frontend/html/usuario.html" 
+
+    }
+
+    if(response.statusCode==200 && response.Usuario.rol=='ADMIN'){
+        console.log(response)
+        localStorage.setItem('userData',JSON.stringify(response))
+        window.location.href="/Frontend/html/admin.html" 
+
+    }
+
+    if(response.statusCode!==200){
+       alert(response.Mensaje) 
+    }
+    
+
+   // window.location.href="/html/usuario.html"
+   
+
+
+  
+})
+
+}
+
+
+loginRequest.addEventListener('click',validarLogin);

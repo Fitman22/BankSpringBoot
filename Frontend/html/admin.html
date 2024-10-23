@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html   lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Tailwimdcss -->
+    <link rel="stylesheet" href="/Frontend/css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+</head>
+<body class="h-screen bg-gray-200 flex flex-col   space-y-10  " >
+    
+<!-- Menu Admin -->
+
+
+
+
+<nav class="p-3 p 6 flex w-full justify-center space-x-10 m-6">
+
+    <a href="" class="text-gray-600 hover:text-black text-lg ease-in-out duration-300 " id="usuarios">Usuarios</a>
+    <a href="" class="text-gray-600 hover:text-black text-lg  ease-in-out duration-300   " id="cuentas">Cuentas</a>
+    <a href="" class="text-gray-600 text-lg  hover:text-black ease-in-out duration-300 ">Transacciones</a>
+</nav>
+
+
+    
+    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-user-btn">
+         
+        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
+        <span class="text-sm">Add new user</span>
+    </button>
+
+   <!--  <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-acc-btn">
+         
+        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
+        <span class="text-sm">Add new account</span>
+    </button> -->
+
+<div class="overflow-auto rounded-lg shadow m-5 hidden md:block " id="table-wrapper">
+
+    <table class="w-full  hidden " id="userTable">
+        <thead class="bg-gray-50 border-b-2 border-gray-200 " id="thead">
+            
+         
+        </thead>
+    
+    
+        <tbody  class="divide-y divide-gray-100" id="tbody">
+    
+          
+    
+        </tbody >
+     </table>
+
+
+</div >
+
+
+<div class="grid grid-cols-1 gap-4 hidden md:hidden">
+
+    <div class="bg-white p-4 rounded-lg shadow">
+     
+     <div class="flex flex-col items-center space-x-2 text-sm ">
+        <div class="text-left">Id</div>
+        <div>Nombre</div>
+        <div>Paswword</div>
+        <div>Email</div>
+        <div>Telefono</div>
+        <div>Fecha de Registro</div>
+        <div>Acciones</div>
+
+
+
+     </div>
+
+
+    </div>
+    
+</div>
+
+
+    
+<div class="flex justify-center items-center hidden " id="modal-confirm-wrapper">
+
+</div>
+
+
+
+
+<div class="flex justify-center items-center  hidden " id="modal-add-user">
+
+
+
+    <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
+
+
+
+
+
+
+
+
+    <form  class=" w-fullflex flex-col space-y-4 " id="newUserForm">
+        <h2 class="text-center font-semibold font-Roboto" >Añadir Usuario</h2>
+        
+        <!-- <label for="userId">User Id:</label>
+        <input class=" w-full border p-2 rounded-md  outline-none" type="number" id="userId" name="userId"  placeholder="Enter User Id">  -->
+        
+        <label for="userName">Nombre:</label>
+        <input class=" w-full border p-2 rounded-md" type="text" id="userName" name="userName" required>
+        
+        <label for="userPassword">Password:</label>
+        <input class=" w-full border p-2 rounded-md" type="password" id="userPassword" name="userPassword" required>
+        
+        <label for="userEmail">Email:</label>
+        <input class=" w-full border p-2 rounded-md" type="email" id="userEmail" name="userEmail" required>
+        
+        <label for="userTelefono">Teléfono:</label>
+        <input class=" w-full border p-2 rounded-md" type="tel" id="userTelefono" name="userTelefono" required>
+                
+        <label for="userRole">Rol:</label>
+        <select class="w-full border p-2 rounded-md" id="userRole" name="userRole" required >
+            <option value="admin">ADMIN</option>
+            <option value="user">USER</option>
+            
+        </select>
+
+        
+        <button type="submit" class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="enviarForm">Añadir Usuario</button>
+        <button class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="cancel-add-user">Cancelar</button>
+
+    </form>
+
+    </div>  
+    
+
+</div>
+
+<div class="flex justify-center items-center  hidden " id="modal-edit-user"></div>
+
+ 
+
+</body>
+ <script src="/Frontend/JS/adminScript.js"></script>
+</html>
