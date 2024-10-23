@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/Usuario")
 public class UsuarioController {
 
 	@Autowired
@@ -67,7 +68,7 @@ public class UsuarioController {
 
 
 
-/**
+
 	@PostMapping("/loginclient")
 	public int login(@RequestBody LoginDto usuario) {
 		int responseLogin =usuarioServicio.login(usuario);
@@ -78,7 +79,7 @@ public class UsuarioController {
 	@PostMapping("/login")
 	public ResponseEntity<?>loginCliente(@RequestBody LoginDto usuario) {
 		return usuarioServicio.ingresar(usuario);
-	}**/
+	}
 
 
 

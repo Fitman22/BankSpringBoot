@@ -12,7 +12,7 @@ public interface IUsuario {
 	Usuario nuevoUsuario(Usuario usuario);
 	Usuario buscarUsuarioPorId(long id);
 	int borrarUsuario(Usuario usuario);
-/**
+
 	int login(LoginDto loginDto);
-	ResponseEntity<?> ingresar(LoginDto usuarioDto);**/
+	ResponseEntity<?> ingresar(LoginDto usuarioDto);
 }

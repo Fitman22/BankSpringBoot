@@ -47,7 +47,6 @@ public class UsuarioServicio implements IUsuario {
 		usuarioRepositorio.delete(cuenta);
 		return 1;
 	}
-/**
 	@Override
 	public int login(LoginDto usuarioDto) {
 		System.out.println(usuarioDto.getNombre_usuario());
@@ -84,5 +83,5 @@ public class UsuarioServicio implements IUsuario {
 
 
 
-	}**/
+	}
 }
