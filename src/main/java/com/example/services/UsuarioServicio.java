@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,17 +24,22 @@ public class UsuarioServicio implements IUsuario {
 	@Autowired
 	usuarioRepositorio usuarioRepositorio;
 
-
+   //Listar Usuarios
 	@Override
 	public List<Usuario> getUsuarios() {
 		return usuarioRepositorio.findAll();
 	}
 
+
+	//Añadir Usuario
 	@Override
 	public Usuario nuevoUsuario(Usuario usuario) {
 		return  usuarioRepositorio.save(usuario);
 	}
 
+
+
+//Buscar por Id
 	@Override
 	public Usuario buscarUsuarioPorId(int id) {
 		Usuario usuario = null;
@@ -42,12 +50,16 @@ public class UsuarioServicio implements IUsuario {
 		return usuario;
 	}
 
+
+	//Borrar Usuario
+
 	@Override
-	public int borrarUsuario(Usuario cuenta) {
-		usuarioRepositorio.delete(cuenta);
+	public  int borrarUsuario(Long id) {
+		usuarioRepositorio.deleteById(id);
 		return 1;
 	}
 
+	//Login
 	@Override
 	public int login(LoginDto usuarioDto) {
 		System.out.println(usuarioDto.getNombre_usuario());
@@ -85,4 +97,12 @@ public class UsuarioServicio implements IUsuario {
 
 
 	}
+
+
+
+
+
+
+
+
 }

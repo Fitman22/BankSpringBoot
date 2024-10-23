@@ -11,8 +11,10 @@ public interface IUsuario {
 	List<Usuario> getUsuarios();
 	Usuario nuevoUsuario(Usuario usuario);
 	Usuario buscarUsuarioPorId(int id);
-	int borrarUsuario(Usuario usuario);
+	int borrarUsuario(Long id);
 
 	int login(LoginDto loginDto);
 	ResponseEntity<?> ingresar(LoginDto usuarioDto);
+
+
 }

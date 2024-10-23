@@ -32,17 +32,21 @@ public class Usuario {
 	@Column(name="fecha_registro")
 	private LocalDateTime fecha_registro;
 
+	@Column(name="rol")
+	private String rol;
+
 	//Constructor
 
 	public Usuario() {}
 
-	public Usuario(int usuario_id, String nombre_usuario, String email, String password_hash, String telefono, LocalDateTime fecha_registro) {
+	public Usuario(int usuario_id, String rol, LocalDateTime fecha_registro, String telefono, String email, String password_hash, String nombre_usuario) {
 		this.usuario_id = usuario_id;
-		this.nombre_usuario = nombre_usuario;
+		this.rol = rol;
+		this.fecha_registro = fecha_registro;
+		this.telefono = telefono;
 		this.email = email;
 		this.password_hash = password_hash;
-		this.telefono = telefono;
-		this.fecha_registro = fecha_registro;
+		this.nombre_usuario = nombre_usuario;
 	}
 
 	// Usuario Getter's
@@ -70,7 +74,9 @@ public class Usuario {
 		return fecha_registro;
 	}
 
-
+	public String getRol() {
+		return rol;
+	}
 
 	//Usuario Setters
 
@@ -97,5 +103,9 @@ public class Usuario {
 
 	public void setFecha_registro(LocalDateTime fecha_registro) {
 		this.fecha_registro = fecha_registro;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 }
