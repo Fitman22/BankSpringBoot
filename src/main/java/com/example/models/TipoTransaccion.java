@@ -8,7 +8,7 @@ public class TipoTransaccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tipoTransaccionId;
+    private Long tipo_transaccion_id;
 
     @Column(name = "nombre_tipo", nullable = false)
     private String nombreTipo;
@@ -20,11 +20,11 @@ public class TipoTransaccion {
     private Boolean requiereAutorizacion;
 
     public Long getTipoTransaccionId() {
-        return tipoTransaccionId;
+        return tipo_transaccion_id;
     }
 
     public void setTipoTransaccionId(Long tipoTransaccionId) {
-        this.tipoTransaccionId = tipoTransaccionId;
+        this.tipo_transaccion_id = tipoTransaccionId;
     }
 
     public String getNombreTipo() {

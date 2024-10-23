@@ -111,3 +111,27 @@ button.btn:hover {
     font-weight: bold;
 }
 
+/* Estilo para los botones de acción */
+.transaction button {
+    background-color: #4CAF50; /* Verde para el botón de Editar */
+    color: white; /* Texto blanco */
+    padding: 10px 15px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero */
+    margin-right: 5px; /* Espacio entre botones */
+    transition: background-color 0.3s; /* Transición suave al cambiar color */
+}
+
+.transaction button:hover {
+    background-color: #45a049; /* Color más oscuro al pasar el mouse */
+}
+
+/* Estilo para el botón de Eliminar */
+.transaction button.delete {
+    background-color: #f44336; /* Rojo para el botón de Eliminar */
+}
+
+.transaction button.delete:hover {
+    background-color: #e53935; /* Color más oscuro al pasar el mouse */
+}

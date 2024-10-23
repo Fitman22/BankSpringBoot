@@ -37,7 +37,17 @@ public class TransaccionController {
         Transaccion nuevaTransaccion = transaccionServicio.crearTransaccion(transaccion);
         return ResponseEntity.ok(nuevaTransaccion);
     }
-
+    @PutMapping("/transacciones/actualizar/{id}")
+    public ResponseEntity<Transaccion> actualizarTransaccion(
+            @PathVariable Long id,
+            @RequestBody Transaccion nuevaTransaccion) {
+        Transaccion transaccionActualizada = transaccionServicio.actualizarTransaccion(id, nuevaTransaccion);
+        if (transaccionActualizada != null) {
+            return ResponseEntity.ok(transaccionActualizada);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
     @DeleteMapping("/transacciones/eliminar/{id}")
     public ResponseEntity<Void> eliminarTransaccion(@PathVariable Long id) {
         boolean eliminada = transaccionServicio.eliminarTransaccion(id);

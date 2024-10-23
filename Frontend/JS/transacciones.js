@@ -9,18 +9,21 @@ function loadTransactions() {
         console.log(data);
         data.forEach(transaction => {
             transactionsResult.innerHTML += `
-                <div class="transaction">
-                    <h3>Transacción ID: ${transaction.transaccionId}</h3>
-                    <p><strong>Monto:</strong> ${transaction.monto}</p>
-                    <p><strong>Cuenta Origen:</strong> ${transaction.cuentaOrigen ? transaction.cuentaOrigen.cuenta_id : 'N/A'}</p>
-                    <p><strong>Cuenta Destino:</strong> ${transaction.cuentaDestino ? transaction.cuentaDestino.cuenta_id : 'N/A'}</p>
-                    <p><strong>Tipo:</strong> ${transaction.tipoTransaccion || 'N/A'}</p>
-                    <p><strong>Estado:</strong> ${transaction.estado ? 'Completada' : 'Pendiente'}</p>
-                    <p><strong>Descripción:</strong> ${transaction.descripcion || 'N/A'}</p>
-                    <p><strong>Fecha:</strong> ${new Date(transaction.fechaTransaccion).toLocaleString() || 'N/A'}</p>
-                    <hr>
-                </div>
-            `;
+    <div class="transaction" id="transaction-${transaction.transaccionId}">
+        <h3>Transacción ID: ${transaction.transaccionId}</h3>
+        <p><strong>Monto:</strong> ${transaction.monto}</p>
+        <p><strong>Cuenta Origen:</strong> ${transaction.cuentaOrigen ? transaction.cuentaOrigen.cuenta_id : 'N/A'}</p>
+        <p><strong>Cuenta Destino:</strong> ${transaction.cuentaDestino ? transaction.cuentaDestino.cuenta_id : 'N/A'}</p>
+        <p><strong>Tipo:</strong> ${transaction.tipoTransaccion || 'N/A'}</p>
+        <p><strong>Estado:</strong> ${transaction.estado ? 'Completada' : 'Pendiente'}</p>
+        <p><strong>Descripción:</strong> ${transaction.descripcion || 'N/A'}</p>
+        <p><strong>Fecha:</strong> ${new Date(transaction.fechaTransaccion).toLocaleString() || 'N/A'}</p>
+        <button onclick="editTransaction(${transaction.transaccionId})">Editar</button>
+        <button class="delete" onclick="deleteTransaction(${transaction.transaccionId})">Eliminar</button>
+        <hr>
+    </div>
+`;
+
         });
     };
 
@@ -31,10 +34,57 @@ function loadTransactions() {
     };
 }
 
+// Función para editar una transacción
+function editTransaction(transaccionId) {
+    const transactionDiv = document.getElementById(`transaction-${transaccionId}`);
+
+    // Obtener los datos actuales de la transacción
+    const monto = parseFloat(transactionDiv.querySelector('strong:nth-of-type(1)').nextSibling.textContent);
+    const descripcion = transactionDiv.querySelector('strong:nth-of-type(7)').nextSibling.textContent;
+
+    // Mostrar un prompt para editar la transacción
+    const nuevoMonto = prompt('Ingrese nuevo monto:', monto);
+    const nuevaDescripcion = prompt('Ingrese nueva descripción:', descripcion);
+
+    if (nuevoMonto !== null && nuevaDescripcion !== null) {
+        const data = {
+            transaccionId: transaccionId,
+            monto: parseFloat(nuevoMonto),
+            descripcion: nuevaDescripcion,
+            estado: true // O puedes ajustar esto según sea necesario
+        };
+
+        // Llama a la función para guardar la transacción actualizada
+        sendRequest(`transacciones/actualizar/${transaccionId}`, 'PUT', data)
+            .then(response => {
+                alert('Transacción actualizada con éxito');
+                loadTransactions(); // Recargar las transacciones para ver los cambios
+            })
+            .catch(error => {
+                alert('Error al actualizar la transacción: ' + error.message);
+                console.error(error);
+            });
+    }
+}
+
+// Función para eliminar una transacción
+function deleteTransaction(transaccionId) {
+    if (confirm('¿Estás seguro de que deseas eliminar esta transacción?')) {
+        sendRequest(`transacciones/eliminar/${transaccionId}`, 'DELETE', '')
+            .then(response => {
+                alert('Transacción eliminada con éxito');
+                loadTransactions(); // Recargar las transacciones para reflejar el cambio
+            })
+            .catch(error => {
+                alert('Error al eliminar la transacción: ' + error.message);
+                console.error(error);
+            });
+    }
+}
+
 // Función para crear una nueva transacción
 function saveTransaction() {
-    alert("yes");
-    console.log("gol");
+
 
     const monto = parseFloat(document.getElementById('monto').value);
     const cuentaOrigenId = parseInt(document.getElementById('cuentaOrigen').value);
@@ -57,8 +107,8 @@ function saveTransaction() {
         estado: true
     };
 
-    console.log("Datos que se enviarán:", JSON.stringify(data));
-    alert("Datos a enviar: " + JSON.stringify(data));
+    //console.log("Datos que se enviarán:", JSON.stringify(data));
+    //alert("Datos a enviar: " + JSON.stringify(data));
 
     sendRequest('transacciones/crear', 'POST', data)
         .then(response => {

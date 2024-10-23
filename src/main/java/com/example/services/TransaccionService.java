@@ -56,13 +56,13 @@ public class TransaccionService {
         Optional<Transaccion> transaccionExistente = transaccionRepositorio.findById(id);
         if (transaccionExistente.isPresent()) {
             Transaccion transaccion = transaccionExistente.get();
-            transaccion.setCuentaOrigen(nuevaTransaccion.getCuentaOrigen());
-            transaccion.setCuentaDestino(nuevaTransaccion.getCuentaDestino());
-            transaccion.setTipoTransaccion(nuevaTransaccion.getTipoTransaccion());
+            // Actualiza los campos de la transacción existente
             transaccion.setMonto(nuevaTransaccion.getMonto());
             transaccion.setDescripcion(nuevaTransaccion.getDescripcion());
             transaccion.setEstado(nuevaTransaccion.getEstado());
-            transaccion.setFechaTransaccion(nuevaTransaccion.getFechaTransaccion());
+            // Asegúrate de que las cuentas también estén actualizadas
+            transaccion.setCuentaOrigen(nuevaTransaccion.getCuentaOrigen());
+            transaccion.setCuentaDestino(nuevaTransaccion.getCuentaDestino());
             return transaccionRepositorio.save(transaccion);
         }
         return null;
