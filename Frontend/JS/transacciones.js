@@ -18,7 +18,7 @@ function loadTransactions() {
         <p><strong>Estado:</strong> ${transaction.estado ? 'Completada' : 'Pendiente'}</p>
         <p><strong>Descripción:</strong> ${transaction.descripcion || 'N/A'}</p>
         <p><strong>Fecha:</strong> ${new Date(transaction.fechaTransaccion).toLocaleString() || 'N/A'}</p>
-        <button onclick="editTransaction(${transaction.transaccionId}, ${transaction.monto}, '${transaction.descripcion}')">Editar</button>
+        <button onclick="editTransaction(${transaction.transaccionId}, ${transaction.monto},'${transaction.descripcion}', ${transaction.cuentaOrigen ? transaction.cuentaOrigen.cuenta_id : 'N/A'}, ${transaction.cuentaDestino ? transaction.cuentaDestino.cuenta_id : 'N/A'})">Editar</button>
         <button class="delete" onclick="deleteTransaction(${transaction.transaccionId})">Eliminar</button>
         <hr>
     </div>
@@ -33,29 +33,35 @@ function loadTransactions() {
     };
 }
 
-function editTransaction(transaccionId, monto, descripcion) {
+function editTransaction(transaccionId, monto, descripcion, cuentaOrigenId, cuentaDestinoId) {
     const transactionDiv = document.getElementById(`transaction-${transaccionId}`);
 
     if (!transactionDiv) {
         console.error(`No se encontró la transacción con ID: ${transaccionId}`);
-        return; // Salir de la función si no se encontró la transacción
+        return;
     }
 
-    // Mostrar el formulario de edición
+    // Asigna los valores al formulario de edición
     document.getElementById('editTransaccionId').value = transaccionId;
     document.getElementById('editMonto').value = monto;
     document.getElementById('editDescripcion').value = descripcion;
 
-    // Mostrar el contenedor del formulario de edición
+    // Aquí también mantenemos las cuentas
+    document.getElementById('editCuentaOrigen').value = cuentaOrigenId;
+    document.getElementById('editCuentaDestino').value = cuentaDestinoId;
+
+    // Muestra el contenedor del formulario de edición
     document.getElementById('editTransactionContainer').style.display = 'block';
 }
 
 function submitEditTransaction(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault();
 
     const transaccionId = document.getElementById('editTransaccionId').value;
     const nuevoMonto = parseFloat(document.getElementById('editMonto').value);
     const nuevaDescripcion = document.getElementById('editDescripcion').value;
+    const cuentaOrigenId = document.getElementById('editCuentaOrigen').value;
+    const cuentaDestinoId = document.getElementById('editCuentaDestino').value;
 
     if (isNaN(nuevoMonto) || nuevoMonto <= 0) {
         alert('Por favor, ingrese un monto válido');
@@ -63,26 +69,25 @@ function submitEditTransaction(event) {
     }
 
     const data = {
+        cuentaOrigen: { cuenta_id: cuentaOrigenId }, // Mantén la cuenta de origen
+        cuentaDestino: { cuenta_id: cuentaDestinoId }, // Mantén la cuenta de destino
         monto: nuevoMonto,
         descripcion: nuevaDescripcion,
-        estado: true,
-        // Asegúrate de agregar cualquier otro dato necesario aquí
+        estado: true // Puedes ajustar esto según lo que necesites
     };
 
-    // Llama a la función para guardar la transacción actualizada
-    sendRequest(`transacciones/actualizar/${transaccionId}`, 'PUT', data).then(response => {
+    sendRequest(`transacciones/actualizar/${transaccionId}`, 'PUT', data)
+        .then(response => {
             alert('Transacción actualizada con éxito');
-            loadTransactions(); // Recargar las transacciones para ver los cambios
-            document.getElementById('editTransactionContainer').style.display = 'none'; // Ocultar el formulario de edición
+            loadTransactions(); // Recargar las transacciones
+            document.getElementById('editTransactionContainer').style.display = 'none'; // Ocultar el formulario
         })
         .catch(error => {
             alert('Error al actualizar la transacción: ' + error.message);
             console.error(error);
         });
-    alert('Transacción actualizada con éxito');
-    loadTransactions(); // Recargar las transacciones para ver los cambios
-    document.getElementById('editTransactionContainer').style.display = 'none'; // Ocultar el formulario de edición
 }
+
 
 
 // Función para eliminar una transacción
