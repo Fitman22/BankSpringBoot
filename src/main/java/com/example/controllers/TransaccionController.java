@@ -29,12 +29,8 @@ public class TransaccionController {
     // Obtener una transacción por ID
     @GetMapping("/transacciones/{id}")
     public ResponseEntity<Transaccion> obtenerTransaccion(@PathVariable Long id) {
-        Optional<Transaccion> transaccion = transaccionServicio.getTransaccionById(id);
-        if (transaccion.isPresent()) {
-            return ResponseEntity.ok(transaccion.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        Transaccion transaccion = transaccionServicio.getTransaccionById(id);
+        return ResponseEntity.ok().body(transaccion);
     }
 
     // Crear una nueva transacción

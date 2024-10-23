@@ -21,9 +21,14 @@ public class TransaccionService {
     }
 
     // Obtener una transacción por ID
-    public Optional<Transaccion> getTransaccionById(Long id) {
-        return transaccionRepositorio.findById(id);
-}
+    public Transaccion getTransaccionById(Long id) {
+        Transaccion transaccion = null;
+        transaccion = transaccionRepositorio.findById((long) id).orElse(null);
+        if (transaccion == null) {
+            return null;
+        }
+        return transaccion;
+    }
     // Crear una nueva transacción
     public Transaccion crearTransaccion(Transaccion transaccion) {
         // Establecer la fecha actual si no se ha proporcionado
