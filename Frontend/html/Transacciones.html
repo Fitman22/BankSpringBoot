@@ -16,7 +16,7 @@
         <!-- Formulario para crear una transacción -->
         <div class="form-container">
             <h2>Crear Transacción</h2>
-            <form id="createTransactionForm" onsubmit="saveTransaction();">
+            <form id="createTransactionForm" onsubmit="saveTransaction(); return false;">
                 <div class="input-group">
                     <label for="monto">Monto:</label>
                     <input type="number" id="monto" placeholder="Ingrese el monto" required>
@@ -51,6 +51,25 @@
             <h2>Ver Todas las Transacciones</h2>
             <button id="viewTransactionsButton" class="btn" onclick="loadTransactions()">Cargar Transacciones</button>
             <div id="transactionsResult" class="transactions-list"></div>
+        </div>
+
+        <!-- Formulario para editar una transacción -->
+        <div class="form-container" id="editTransactionContainer" style="display:none;">
+            <h2>Editar Transacción</h2>
+            <form id="editTransactionForm" onsubmit="submitEditTransaction(event);">
+                <input type="hidden" id="editTransaccionId">
+                <div class="input-group">
+                    <label for="editMonto">Monto:</label>
+                    <input type="number" id="editMonto" placeholder="Ingrese el nuevo monto" required>
+                </div>
+                <div class="input-group">
+                    <label for="editDescripcion">Descripción:</label>
+                    <input type="text" id="editDescripcion" placeholder="Ingrese una nueva descripción" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit" class="btn">Actualizar Transacción</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
