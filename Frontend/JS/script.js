@@ -2,7 +2,7 @@ const btn= document.getElementById('hamburger-menu-btn');
 const menu=document.getElementById('mobile-menu')
 const loginBtn=document.getElementById('login-btn')
 const backdrop=document.getElementById('backdrop')
-const cardLog= document.getElementById('log-in-card')
+const cardLog= document.getElementById('Global_container')
 
 const loginRequest= document.getElementById('btn-log')
 
@@ -41,7 +41,7 @@ let dataRequest= {
     password_hash: password.value
 }
 
-fetch('http://localhost:8095/login',{
+fetch('http://localhost:8094/login',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'

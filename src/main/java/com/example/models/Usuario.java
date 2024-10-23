@@ -19,7 +19,7 @@ public class Usuario {
 	private String nombre_usuario;
 
 
-	@Column(name="contraseña_hash")
+	@Column(name="password_hash")
 	private String password_hash;
 
 
@@ -89,7 +89,7 @@ public class Usuario {
 		this.nombre_usuario = nombre_usuario;
 	}
 
-	public void setContrasena_hash(String contrasena_hash) {
+	public void setContrasena_hash(String password_hash) {
 		this.password_hash = password_hash;
 	}
 
