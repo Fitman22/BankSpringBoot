@@ -33,7 +33,7 @@ public class UsuarioServicio implements IUsuario {
 	}
 
 	@Override
-	public Usuario buscarUsuarioPorId(int id) {
+	public Usuario buscarUsuarioPorId(long id) {
 		Usuario usuario = null;
 		usuario = usuarioRepositorio.findById((long) id).orElse(null);
 		if (usuario == null) {
@@ -47,7 +47,7 @@ public class UsuarioServicio implements IUsuario {
 		usuarioRepositorio.delete(cuenta);
 		return 1;
 	}
-
+/**
 	@Override
 	public int login(LoginDto usuarioDto) {
 		System.out.println(usuarioDto.getNombre_usuario());
@@ -84,5 +84,5 @@ public class UsuarioServicio implements IUsuario {
 
 
 
-	}
+	}**/
 }
