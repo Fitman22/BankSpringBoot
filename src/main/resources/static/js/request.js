@@ -1,10 +1,10 @@
-const url = "http:/localhost:8000/"
+const url = "http://localhost:8000/"
 
 function sendRequest (endPoint, method, data) {
 
     let request = new XMLHttpRequest();
     request.open(method, url + endPoint);
-    request.responseType = 'json'
+    request.responseType = 'text'
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(data  ? JSON.stringify(data): data);
     return request;

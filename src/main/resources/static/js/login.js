@@ -7,17 +7,17 @@ function validarLogin() {
     console.log(nombreUsuario)
     console.log(password)
 
-    let data = {'nombreUsuario': nombreUsuario, 'password': password}
+    let data = {"nombreUsuario": nombreUsuario, "password": password}
 
     console.log(data)
-
+    console.log(typeof data)
     let request = sendRequest('api/Usuario/loginclient', 'POST', data)
-
+    console.log(sendRequest('api/Usuario/loginclient', 'POST', data).response)
     request.onload = function () {
 
-        let data1 = request.response;
-
-        console.log(datal);
+        let responseText = request.responseText; // Obtiene la respuesta como texto
+        let data1 = parseInt(responseText, 10); // Convierte el texto en un entero
+        console.log(data1);
 
         if (data1 == 1) {
 
