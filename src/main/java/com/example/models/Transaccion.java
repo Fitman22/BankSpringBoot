@@ -14,11 +14,11 @@ public class Transaccion {
     private Long transaccion_id;
 
     @ManyToOne
-    @JoinColumn(name = "cuenta_origen_id",referencedColumnName = "cuenta_id")
+    @JoinColumn(name = "cuenta_origen_id")
     private CuentaBancaria cuentaOrigen;
 
     @ManyToOne
-    @JoinColumn(name = "cuenta_destino_id", referencedColumnName = "cuenta_id")
+    @JoinColumn(name = "cuenta_destino_id")
     private CuentaBancaria cuentaDestino;
 
     @ManyToOne
