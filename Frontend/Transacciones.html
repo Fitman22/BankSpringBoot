@@ -1,89 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD de Transacciones Bancarias</title>
-    <link rel="stylesheet" href="css/transaccionesStyle.css">
+    <title>Title</title>
 </head>
 <body>
-<header>
-    <div class="logo">BankApp</div>
-    <nav>
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Transacciones</a></li>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Salir</a></li>
-        </ul>
-    </nav>
-</header>
 
-<section class="crud-section">
-    <h1>Gestión de Transacciones</h1>
-
-    <!-- Formulario de Crear/Editar Transacción -->
-    <div class="form-container">
-        <h2>Registrar Nueva Transacción</h2>
-        <form id="transaction-form">
-            <div class="form-group">
-                <label for="titulo">Título</label>
-                <input type="text" id="titulo" placeholder="Descripción de la transacción">
-            </div>
-            <div class="form-group">
-                <label for="monto">Monto</label>
-                <input type="number" id="monto" placeholder="Monto de la transacción">
-            </div>
-            <div class="form-group">
-                <label for="tipo">Tipo de Transacción</label>
-                <select id="tipo">
-                    <option value="ingreso">Ingreso</option>
-                    <option value="egreso">Egreso</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="fecha">Fecha</label>
-                <input type="date" id="fecha">
-            </div>
-            <button type="submit" class="btn-submit">Guardar Transacción</button>
-        </form>
-    </div>
-
-    <!-- Tabla de Transacciones -->
-    <div class="table-container">
-        <h2>Transacciones Existentes</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>Monto</th>
-                <th>Tipo</th>
-                <th>Fecha</th>
-                <th>Acciones</th>
-            </tr>
-            </thead>
-            <tbody id="transaction-table-body">
-            <!-- Ejemplo de una fila de transacción -->
-            <tr>
-                <td>1</td>
-                <td>Pago de Servicios</td>
-                <td>$80.000</td>
-                <td>Egreso</td>
-                <td>12 Oct 2024</td>
-                <td>
-                    <button class="btn-edit">Editar</button>
-                    <button class="btn-delete">Eliminar</button>
-                </td>
-            </tr>
-            <!-- Más filas generadas dinámicamente -->
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2024 BankApp - Todos los derechos reservados</p>
-</footer>
 </body>
 </html>
