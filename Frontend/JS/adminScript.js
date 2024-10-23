@@ -26,21 +26,16 @@ const modaladdUser=document.getElementById("modal-add-user");
 const modalEditUser=document.getElementById("modal-edit-user");
 
 
-
-
-
 let IdUserToDelete;
-
-
 
 /* Cargar Usuarios */
 
 function cargarUsuarios(){
 
 
-fetch('http://localhost:8095/listar').then(response => response.json()).then(data => {
+fetch('http://localhost:8094/listar').then(response => response.json()).then(data => {
 
-
+       console.log(data)
     let colorRow="bg-white";
     let htmlthead = `
     
@@ -64,9 +59,6 @@ fetch('http://localhost:8095/listar').then(response => response.json()).then(dat
     
         htmltbody+=`
       
-            
-
-       
         <tr class="${colorRow}"> 
         <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.usuario_id} </td>
         <td class="p-3 text-sm text-gray-700 whitespace-nowrap "> ${element.nombre_usuario} </td>
@@ -92,9 +84,6 @@ fetch('http://localhost:8095/listar').then(response => response.json()).then(dat
 
     })
 
-
-   
-   
     thead.innerHTML=htmlthead;
     tbody.innerHTML = htmltbody;
     table.classList.toggle('hidden');
@@ -104,19 +93,9 @@ fetch('http://localhost:8095/listar').then(response => response.json()).then(dat
        
   /* Añadiendo evento al boton */
    
-   
-
- 
- 
-   
-
 } );
-
-    
+   
 }
-
-
-
 
 
 usuarios.addEventListener('click', (e)=>{e.preventDefault()
@@ -126,13 +105,11 @@ usuarios.addEventListener('click', (e)=>{e.preventDefault()
     
 });
 
-
-
 //cargarCuentas
 
 function cargarCuentas(){
 
-  fetch('http://localhost:8095/listAccounts').then(response => response.json()).then(data => {
+  fetch('http://localhost:8094/listAccounts').then(response => response.json()).then(data => {
      
       let colorRow="bg-white";
       let htmlhead=`
@@ -191,12 +168,7 @@ function cargarCuentas(){
   
     /* Añadiendo evento al boton */
      
-     
   
-   
-   
-     
-
   } );
   
       
@@ -268,7 +240,7 @@ deleteModal.addEventListener('click', (e)=>{
     if(e.target.classList.contains('btn-confirm')){
 
 
-    fetch(`http://localhost:8095/userDelete/${IdUserToDelete}`, {
+    fetch(`http://localhost:8094/userDelete/${IdUserToDelete}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json', // Asegúrate de enviar el tipo de contenido correcto
@@ -323,7 +295,7 @@ newUserForm.addEventListener('submit', (e)=>{
      }
 
 
-     fetch(`http://localhost:8095/addUser`, {
+     fetch(`http://localhost:8094/addUser`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json', // Asegúrate de enviar el tipo de contenido correcto
@@ -400,12 +372,6 @@ table.addEventListener('click', (e)=>{
 
 
     <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
-
-
-
-
-
-
 
 
     <form  class=" w-fullflex flex-col space-y-4 " id="newUserForm">
