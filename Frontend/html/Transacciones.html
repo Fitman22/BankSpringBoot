@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/transacciones.css">
+    <title>Banco - Transacciones</title>
+</head>
+<body>
+<div class="container">
+    <h1>Gestión de Transacciones</h1>
+    <div class="form-container">
+        <h2>Crear Transacción</h2>
+        <form id="createTransactionForm" onsubmit="saveTransaction();">
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" required>
+
+            <label for="cuentaOrigen">Cuenta Origen:</label>
+            <input type="text" id="cuentaOrigen" required>
+
+            <label for="cuentaDestino">Cuenta Destino:</label>
+            <input type="text" id="cuentaDestino" required>
+
+            <label for="Descripcion">Descripcion:</label>
+            <input type="text" id="Descripcion" required>
+
+            <label for="tipoTransaccion">Tipo de Transacción:</label>
+            <select id="tipoTransaccion" required>
+                <option value="DEPOSITO">Depósito</option>
+                <option value="RETIRO">Retiro</option>
+            </select>
+
+            <button type="submit">Crear Transacción</button>
+        </form>
+    </div>
+
+    <div class="view-container">
+        <h2>Ver Todas las Transacciones</h2>
+        <button id="viewTransactionsButton">Cargar Transacciones</button>
+        <div id="transactionsResult"></div>
+    </div>
+</div>
+<script src="../JS/request.js"></script>
+<script src="../JS/transacciones.js"></script>
+</body>
+</html>

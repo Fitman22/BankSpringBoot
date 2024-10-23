@@ -23,7 +23,7 @@ public class TransaccionService {
     // Obtener una transacción por ID
     public Transaccion getTransaccionById(Long id) {
         Transaccion transaccion = null;
-        transaccion = transaccionRepositorio.findById((long) id).orElse(null);
+        transaccion = transaccionRepositorio.findById(id).orElse(null);
         if (transaccion == null) {
             return null;
         }
