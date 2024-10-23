@@ -16,6 +16,8 @@ public class TransaccionController {
 
     @Autowired
     private TransaccionService transaccionServicio;
+    @Autowired
+    private TransaccionService transaccionService;
 
     // Obtener todas las transacciones
     @GetMapping("/transacciones")
@@ -35,6 +37,18 @@ public class TransaccionController {
         Transaccion nuevaTransaccion = transaccionServicio.crearTransaccion(transaccion);
         return ResponseEntity.ok(nuevaTransaccion);
     }
+
+    @DeleteMapping("/transacciones/eliminar/{id}")
+    public ResponseEntity<Void> eliminarTransaccion(@PathVariable Long id) {
+        boolean eliminada = transaccionServicio.eliminarTransaccion(id);
+        if (eliminada) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 
 }
 

@@ -12,8 +12,8 @@ function loadTransactions() {
                 <div class="transaction">
                     <h3>Transacción ID: ${transaction.transaccionId}</h3>
                     <p><strong>Monto:</strong> ${transaction.monto}</p>
-                    <p><strong>Cuenta Origen:</strong> ${transaction.cuenta_origen_id ? transaction.cuenta_origen_id.cuenta_id : 'N/A'}</p>
-                    <p><strong>Cuenta Destino:</strong> ${transaction.cuenta_destino_id ? transaction.cuenta_destino_id.cuenta_id : 'N/A'}</p>
+                    <p><strong>Cuenta Origen:</strong> ${transaction.cuentaOrigen ? transaction.cuentaOrigen.cuenta_id : 'N/A'}</p>
+                    <p><strong>Cuenta Destino:</strong> ${transaction.cuentaDestino ? transaction.cuentaDestino.cuenta_id : 'N/A'}</p>
                     <p><strong>Tipo:</strong> ${transaction.tipoTransaccion || 'N/A'}</p>
                     <p><strong>Estado:</strong> ${transaction.estado ? 'Completada' : 'Pendiente'}</p>
                     <p><strong>Descripción:</strong> ${transaction.descripcion || 'N/A'}</p>
@@ -49,8 +49,8 @@ function saveTransaction() {
     }
 
     let data = {
-        cuenta_origen_id: { cuenta_id: cuentaOrigenId },
-        cuenta_destino_id: { cuenta_id: cuentaDestinoId },
+        cuentaOrigen: { cuenta_id: cuentaOrigenId },
+        cuentaDestino: { cuenta_id: cuentaDestinoId },
         monto: monto,
         fechaTransaccion: new Date().toISOString(),
         descripcion: descripcion,

@@ -69,7 +69,11 @@ public class TransaccionService {
     }
 
     // Eliminar una transacción por ID
-    public void eliminarTransaccion(Long id) {
-        transaccionRepositorio.deleteById(id);
+    public boolean eliminarTransaccion(Long id) {
+        if (transaccionRepositorio.existsById(id)) {
+            transaccionRepositorio.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
