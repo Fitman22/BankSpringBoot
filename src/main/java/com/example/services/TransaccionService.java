@@ -35,10 +35,8 @@ public class TransaccionService {
     // Crear una nueva transacción
     public Transaccion crearTransaccion(Transaccion transaccion) {
         // Establecer la fecha actual si no se ha proporcionado
-        CuentaBancaria cuentaOrigen = cuentaBancariaRepositorio.findById(transaccion.getCuentaOrigen().getCuenta_id())
-                .orElseThrow(() -> new RuntimeException("Cuenta de origen no encontrada"));
-        CuentaBancaria cuentaDestino = cuentaBancariaRepositorio.findById(transaccion.getCuentaDestino().getCuenta_id())
-                .orElseThrow(() -> new RuntimeException("Cuenta de destino no encontrada"));
+        CuentaBancaria cuentaOrigen = cuentaBancariaRepositorio.findById(transaccion.getCuentaOrigen().getCuenta_id()).orElse(null);
+        CuentaBancaria cuentaDestino = cuentaBancariaRepositorio.findById(transaccion.getCuentaDestino().getCuenta_id()).orElse(null);
         if (transaccion.getFechaTransaccion() == null) {
             transaccion.setFechaTransaccion(new java.sql.Timestamp(System.currentTimeMillis()));
         }
