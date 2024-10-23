@@ -7,7 +7,7 @@ import java.util.List;
 public interface ICuentaBancaria {
 	List<CuentaBancaria> getCuentas();
 	CuentaBancaria nuevaCuenta(CuentaBancaria cuenta);
-	CuentaBancaria buscarCuentaPorId(int id);
+	CuentaBancaria buscarCuentaPorId(long id);
 	int borrarCuenta(CuentaBancaria cuenta);
 
 

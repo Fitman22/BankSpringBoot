@@ -3,6 +3,7 @@ package com.example.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.models.CuentaBancaria;
 import com.example.models.Transaccion;
 import com.example.repository.TransaccionRepositorio;
 
@@ -14,6 +15,8 @@ public class TransaccionService {
 
     @Autowired
     private TransaccionRepositorio transaccionRepositorio;
+    @Autowired
+    private com.example.repository.cuentaBancariaRepositorio cuentaBancariaRepositorio;
 
     // Obtener todas las transacciones
     public List<Transaccion> getTransacciones() {
@@ -32,10 +35,22 @@ public class TransaccionService {
     // Crear una nueva transacción
     public Transaccion crearTransaccion(Transaccion transaccion) {
         // Establecer la fecha actual si no se ha proporcionado
+        CuentaBancaria cuentaOrigen = cuentaBancariaRepositorio.findById(transaccion.getCuentaOrigen().getCuenta_id())
+                .orElseThrow(() -> new RuntimeException("Cuenta de origen no encontrada"));
+        CuentaBancaria cuentaDestino = cuentaBancariaRepositorio.findById(transaccion.getCuentaDestino().getCuenta_id())
+                .orElseThrow(() -> new RuntimeException("Cuenta de destino no encontrada"));
         if (transaccion.getFechaTransaccion() == null) {
             transaccion.setFechaTransaccion(new java.sql.Timestamp(System.currentTimeMillis()));
         }
-        return transaccionRepositorio.save(transaccion);
+        Transaccion transaccion2 = new Transaccion();
+        transaccion2.setCuentaOrigen(cuentaOrigen);
+        transaccion2.setCuentaDestino(cuentaDestino);
+        transaccion2.setMonto(transaccion.getMonto());
+        transaccion2.setFechaTransaccion(transaccion.getFechaTransaccion());
+        transaccion2.setDescripcion(transaccion.getDescripcion());
+        transaccion2.setEstado(transaccion.getEstado());
+
+        return transaccionRepositorio.save(transaccion2);
     }
 
     // Actualizar una transacción

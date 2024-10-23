@@ -1,59 +1,113 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
-    color: #ffffff;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #181818;
+    color: #333;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #2a2a2a;
+    background-color: #8a8a8a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-h1, h2 {
-    color: #007bff;
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #e1e1e1;
+    font-size: 32px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .form-container, .view-container {
-    margin-bottom: 20px;
+    width: 48%;
+}
+
+h2 {
+    color: #dadada;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
-    margin: 10px 0 5px;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 input, select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: none;
+    border: 1px solid #717e57;
     border-radius: 4px;
-    background-color: #444;
-    color: #fff;
+    font-size: 16px;
 }
 
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
+input:focus, select:focus {
+    outline: none;
+    border-color: #5b6c5a;
+}
+
+button.btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #617851;
+    color: #fff;
     border: none;
     border-radius: 4px;
-    color: #fff;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
+button.btn:hover {
+    background-color: #829e75;
 }
 
-#transactionsResult {
-    margin-top: 20px;
-    background-color: #333;
-    padding: 15px;
+.transactions-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
     border-radius: 4px;
 }
+
+.transaction {
+    margin-bottom: 15px;
+}
+
+.transaction h3 {
+    font-size: 20px;
+    color: #cfcfcf;
+}
+
+.transaction p {
+    margin: 5px 0;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
