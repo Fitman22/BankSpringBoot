@@ -6,10 +6,6 @@ const cardLog= document.getElementById('Global_container')
 
 const loginRequest= document.getElementById('btn-log')
 
-
-
-
-
 /* Hamburger Event Listener */
 btn.addEventListener('click',navToggle)
  
@@ -24,9 +20,7 @@ menu.classList.toggle('hidden')
 /*  Log-in BTN  */
 
 
-
 loginBtn.addEventListener('click',()=>cardLog.classList.toggle('hidden'))
-
 
 
 //Validar Loggin Function
@@ -69,13 +63,9 @@ fetch('http://localhost:8094/login',{
     if(response.statusCode!==200){
        alert(response.Mensaje) 
     }
-    
 
    // window.location.href="/html/usuario.html"
    
-
-
-  
 })
 
 }

@@ -1,7 +1,7 @@
 const userTable = document.getElementById('user-table');
 const theadUserTable=document.getElementById('thead-user');
 const tbodyUserTable=document.getElementById('tbody-user');
-const userNav = document.getElementById('usuarios');
+/* const userNav = document.getElementById('usuarios'); */
 const deleteModal=document.getElementById('modal-delete-user');
 const addUserBtn=document.getElementById('add-user-btn');
 
@@ -10,21 +10,20 @@ const modalEditUser=document.getElementById('modal-edit-user');
 const addUserBtnForm=document.getElementById('enviarForm');
 const canceladdUser=document.getElementById('cancel-add-user');
 
-
 const editUserForm=document.getElementById('editUserForm');
-const dataEdit = {};
 
 
 let idUsertoDelete;
 
-//CargarUsuarios
+ cargarUsuarios(); 
+
 
 function cargarUsuarios(){
 
 
     fetch('http://localhost:8094/listar').then(response => response.json()).then(data => {
     
-          
+          console.log(data)
         let colorRow="bg-white";
         let htmlthead = `
         
@@ -73,13 +72,15 @@ function cargarUsuarios(){
 
         theadUserTable.innerHTML=htmlthead;
         tbodyUserTable.innerHTML = htmltbody;
-        userTable.classList.toggle('hidden');
-        addUserBtn.classList.toggle('hidden'); 
+        
          
       
     } );
        
     }
+
+
+   
 
 //Borrar Usuarios
  userTable.addEventListener('click', (e)=>{ 
@@ -111,10 +112,11 @@ function cargarUsuarios(){
         </div>
     
      `
-       userTable.classList.toggle('hidden');
-       addUserBtn.classList.toggle('hidden');
+      
        deleteModal.innerHTML=html; 
        deleteModal.classList.toggle('hidden'); 
+        addUserBtn.classList.toggle('hidden');
+        userTable.classList.toggle('hidden');
        
 }})
 
@@ -146,7 +148,6 @@ if(e.target.classList.contains('btn-cancel')){
   }
 
 }) 
-
 
 //Añadir Usuarios 
 
@@ -185,10 +186,6 @@ newUserForm.addEventListener('submit', (e)=>{
        modalAddUser.classList.toggle('hidden');
        cargarUsuarios();
 
-  
-
-
-    
 
    }) 
 
@@ -202,8 +199,6 @@ newUserForm.addEventListener('submit', (e)=>{
 
 
 })
-
-
 
 
 //Editar Usuarios
@@ -222,14 +217,10 @@ userTable.addEventListener('click', (e)=>{
            console.log(columna.textContent)
        }) */
 
-
        html=`
       
-
     <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
 
-
-    
         <h2 class="text-center font-semibold font-Roboto" >Editar Usuario</h2>
         
          <label for="userId">User Id:</label>
@@ -258,12 +249,8 @@ userTable.addEventListener('click', (e)=>{
         <button type="submit" class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 editForm " id="editForm">Editar Usuario</button>
         <button class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="cancel-add-user">Cancelar</button>
 
-    
-
     </div>  
-
-
-       
+ 
        `
 
     editUserForm.innerHTML=html;
@@ -271,10 +258,7 @@ userTable.addEventListener('click', (e)=>{
     addUserBtn.classList.toggle('hidden');
     userTable.classList.toggle('hidden');
     
-  
 
-   
-   
 }}) 
 
 editUserForm.addEventListener('submit', (e)=>{
@@ -299,10 +283,7 @@ editUserForm.addEventListener('submit', (e)=>{
 
       deleteModal.classList.toggle('hidden');
       cargarUsuarios();
-  
         
-      
-    
 })
 
 if(e.target.classList.contains('btn-cancel')){
@@ -311,14 +292,6 @@ if(e.target.classList.contains('btn-cancel')){
   }
 
 }) 
-
-
-
-
-
-
-
-
 
 
 
@@ -360,13 +333,14 @@ if(e.target.classList.contains('btn-cancel')){
 
     //User Nav Event 
 
-    usuarios.addEventListener('click', (e)=>{e.preventDefault()
+   /*   usuarios.addEventListener('click', (e)=>{
+      e.preventDefault()
    
     
         cargarUsuarios()
         
-    });
-
+    }); */
+ 
 
 
 // + User

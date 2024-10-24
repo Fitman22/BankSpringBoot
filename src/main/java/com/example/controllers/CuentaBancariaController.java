@@ -24,6 +24,7 @@ public class CuentaBancariaController {
     }
 
     // Obtener todas las cuentas bancarias
+    @CrossOrigin(origins = "*")
     @GetMapping("/all")
     public ResponseEntity<List<CuentaBancaria>> obtenerTodasLasCuentas() {
         List<CuentaBancaria> cuentas = cuentaBancariaService.obtenerTodasLasCuentas();

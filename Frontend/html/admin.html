@@ -21,32 +21,38 @@
 
 
 
-<nav class="p-3 p 6 flex w-full justify-center space-x-10 m-6">
-    <a href="" class="text-gray-600 hover:text-black text-lg ease-in-out duration-300 " id="usuarios">Usuarios</a>
-    <a href="" class="text-gray-600 hover:text-black text-lg  ease-in-out duration-300   " id="cuentas">Cuentas</a>
+<nav class="p-3 p 6 flex w-full justify-center space-x-10 m-6" id="nav-menu">
+    <a href="" class="text-gray-600 hover:text-black text-lg ease-in-out duration-300   " id="usuarios" data-crud="Usuarios">Usuarios</a>
+    <a href="" class="text-gray-600 hover:text-black text-lg  ease-in-out duration-300   " id="cuentas" data-crud="CuentasBancarias">Cuentas</a>
     <a href="" class="text-gray-600 text-lg  hover:text-black ease-in-out duration-300 ">Transacciones</a>
 </nav>
 
 
     
-    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-user-btn">
+     <!-- <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-user-btn">
          
         <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
         <span class="text-sm">Add new user</span>
-    </button>
+    </button>  -->
 
 
-    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-acc-btn">
+ <!--    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-acc-btn">
          
         <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
         <span class="text-sm">Add new acc</span>
-    </button>
+    </button> -->
 
 
 <!-- User Table  -->
 
    
-<div class="overflow-auto rounded-lg shadow m-5 hidden md:block " id="table-wrapper-user">
+<div class="overflow-auto rounded-lg shadow m-5 hidden crud-content md:block " id="table-wrapper-Usuarios">
+
+    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-user-btn">
+         
+        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
+        <span class="text-sm">Add new user</span>
+    </button> 
 
     <table class="w-full  hidden " id="user-table">
         <thead class="bg-gray-50 border-b-2 border-gray-200 " id="thead-user">
@@ -68,9 +74,16 @@
 
 <!-- Accounts Table -->
 
-<div class="overflow-auto rounded-lg shadow m-5 hidden md:block " id="table-wrapper-accounts">
+<div class="overflow-auto rounded-lg shadow m-5 hidden crud-content md:block  " id="table-wrapper-CuentasBancarias">
 
-    <table class="w-full  hidden " id="AccountsTable">
+    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5 hidden hover:opacity-70 " id="add-acc-btn">
+         
+        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
+        <span class="text-sm">Add new acc</span>
+    </button>
+
+
+    <table class="w-full  hidden " id="accounts-table">
         <thead class="bg-gray-50 border-b-2 border-gray-200 " id="thead-accounts">
             
          
@@ -221,6 +234,8 @@
 
 
 </div>
+
+
 <div class="flex justify-center items-center  hidden " id="modal-delete-user"></div>
 
  

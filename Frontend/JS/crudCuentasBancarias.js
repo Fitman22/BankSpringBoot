@@ -1,19 +1,15 @@
-
 const accountTable = document.getElementById('accounts-table');
 const theadAccountTable = document.getElementById('thead-accounts');
 const tbodyAccountTable = document.getElementById('tbody-accounts');
-const userNav = document.getElementById('cuentas');
+const addAccountBtn = document.getElementById('add-acc-btn');
 
 
-
-
-
-
+cargarCuentas();
 
 function cargarCuentas(){
 
 
-    fetch('http://localhost:8094/all').then(response => response.json()).then(data => {
+    fetch('http://localhost:8094/cuentas/all').then(response => response.json()).then(data => {
     
           
         let colorRow="bg-white";
@@ -38,13 +34,13 @@ function cargarCuentas(){
             htmltbody+=`
           
             <tr class="${colorRow}"> 
-            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.usuario_id} </td>
-            <td class="p-3 text-sm text-gray-700 whitespace-nowrap "> ${element.nombre_usuario} </td>
-            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.password_hash}</td>
-            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.email}</td>
-            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.telefono}</td>
-            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.fecha_registro}</td>
-            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.rol}</td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.cuenta_id} </td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap "> ${element.usuario_id.usuario_id} </td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.numero_cuenta}</td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.estado_cuenta}</td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.fecha_apertura}</td>
+            <td class="p-3 text-sm text-gray-700 whitespace-nowrap"> ${element.tipo_cuenta.tipo_cuenta_id}</td>
+           
     
             <td class="p-3 text-sm text-gray-700 flex  space-x-10 whitespace-nowrap">
     
@@ -61,12 +57,24 @@ function cargarCuentas(){
 
         })
 
-        theadUserTable.innerHTML=htmlthead;
-        tbodyUserTable.innerHTML = htmltbody;
-        userTable.classList.toggle('hidden');
-        addUserBtn.classList.toggle('hidden'); 
+        
+        theadAccountTable.innerHTML=htmlthead;
+        tbodyAccountTable.innerHTML = htmltbody;
+        
+        
+        
          
       
     } );
        
     }
+
+
+
+
+
+
+
+
+
+
