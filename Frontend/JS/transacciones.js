@@ -64,7 +64,7 @@ function submitEditTransaction(event) {
     const cuentaDestinoId = document.getElementById('editCuentaDestino').value;
 
     if (isNaN(nuevoMonto) || nuevoMonto <= 0) {
-        alert('Por favor, ingrese un monto válido');
+        alert(nuevoMonto);
         return;
     }
 
@@ -76,16 +76,15 @@ function submitEditTransaction(event) {
         estado: true // Puedes ajustar esto según lo que necesites
     };
 
-    sendRequest(`transacciones/actualizar/${transaccionId}`, 'PUT', data)
-        .then(response => {
-            alert('Transacción actualizada con éxito');
-            loadTransactions(); // Recargar las transacciones
-            document.getElementById('editTransactionContainer').style.display = 'none'; // Ocultar el formulario
-        })
-        .catch(error => {
-            alert('Error al actualizar la transacción: ' + error.message);
-            console.error(error);
-        });
+    let request = sendRequest(`transacciones/actualizar/${transaccionId}`, 'PUT', data)
+    request.onload=function (){
+        alert('Transacción actualizada con éxito');
+        loadTransactions(); // Recargar las transacciones
+        document.getElementById('editTransactionContainer').style.display = 'none';
+    }
+    request.onerror = function(){
+        alert('No se pudo actualizar');
+    }
 }
 
 
@@ -118,7 +117,7 @@ function saveTransaction() {
     console.log("Valores capturados:", { monto, cuentaOrigenId, cuentaDestinoId, descripcion });
 
     if (isNaN(monto) || monto <= 0) {
-        alert('Por favor, ingrese un monto válido');
+        alert(monto);
         return;
     }
 

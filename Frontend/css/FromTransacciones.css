@@ -1,0 +1,291 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.4em;
+    background-color: #171717;
+    border-radius: 25px;
+    transition: .4s ease-in-out;
+
+}
+
+
+
+#heading {
+    text-align: center;
+    margin: 2em;
+    color: rgb(255, 255, 255);
+    font-size: 1.8em;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.9em;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+}
+
+.input-icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: white;
+}
+
+.input-field {
+    background: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    color: #d3d3d3;
+}
+
+.form .btn {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 2.5em;
+}
+
+.button1 {
+    padding: 0.5em;
+    padding-left: 1.1em;
+    padding-right: 1.1em;
+    border-radius: 5px;
+    margin-right: 0.5em;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+
+.button1:hover {
+    background-color: black;
+    color: white;
+}
+
+.button2 {
+    padding: 0.5em;
+    padding-left: 2.3em;
+    padding-right: 2.3em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+
+.button2:hover {
+    background-color: black;
+    color: white;
+}
+
+.button3 {
+    margin-bottom: 3em;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+.button3:hover {
+    background-color: #9a9a9a;
+    color: white;
+}
+.button6 {
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+.button6:hover {
+    background-color: #9a9a9a;
+    color: white;
+}
+.form-container {
+    width: 48%;
+}
+.view-container{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    justify-content: flex-start;
+    height: 55vh;
+}
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+/* From Uiverse.io by mahiatlinux */
+:focus {
+    outline: 0;
+    border-color: #3a3e4c;
+    box-shadow: 0 0 0 4px #303030;
+}
+
+.mydict div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.mydict input[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.mydict input[type="radio"]:checked + span {
+    box-shadow: 0 0 0 0.0625em #585c65;
+    background-color: #1c2b4a;
+    z-index: 1;
+    color: #c5c5c5;
+}
+
+label span {
+    display: block;
+    cursor: pointer;
+    background-color: #1e2635;
+    padding: 0.375em 0.75em;
+    position: relative;
+    margin-left: 0.0625em;
+    box-shadow: 0 0 0 0.0625em #4a5568;
+    letter-spacing: 0.05em;
+    color: #494949;
+    text-align: center;
+    transition: background-color 0.5s ease;
+}
+
+label:first-child span {
+    border-radius: 0.375em 0 0 0.375em;
+}
+
+label:last-child span {
+    border-radius: 0 0.375em 0.375em 0;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: initial;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+}
+
+.transactions-list {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Estilo general para el contenedor de transacciones */
+.transaction {
+    background-color: #494949;; /* Color de fondo de la tarjeta */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px; /* Separación entre tarjetas */
+    padding: 20px; /* Espacio interno */
+    border-left: 5px solid rgba(255, 255, 255, 0.51); /* Borde de color verde en el lado izquierdo */
+    transition: transform 0.2s; /* Animación suave al hacer hover */
+}
+
+.transaction:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+}
+
+/* Estilo para el título de cada transacción */
+.transaction h3 {
+    color: #ffffff; /* Color del texto */
+    font-size: 1.2em; /* Tamaño del texto */
+    margin-bottom: 7px; /* Separación inferior */
+}
+
+/* Estilo para los párrafos dentro de las transacciones */
+.transaction p {
+    color: #d1d1d1; /* Color del texto */
+    font-size: 1.2em; /* Tamaño del texto */
+    margin: 8px 0; /* Margen interno */
+}
+
+/* Estilo para los botones dentro de las tarjetas */
+.transaction button {
+    margin-bottom: 3em;
+    padding: 0.8em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #252525;
+    color: white;
+}
+.transaction button.delete {
+    background-color: #dadada; /* Color de fondo rojo para el botón de eliminar */
+    color: black;
+}
+
+.transaction button:hover {
+    background-color: #9a9a9a;
+    color: white;
+}
+
+.transaction button.delete:hover {
+    background-color: #636363;
+    color: white;
+}
+
+/* Estilo responsivo para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .transaction {
+        padding: 15px; /* Reducir el relleno en pantallas pequeñas */
+    }
+
+    .transaction h3 {
+        font-size: 1.2em; /* Reducir el tamaño del texto */
+    }
+
+    .transaction button {
+        padding: 8px 16px; /* Reducir el tamaño de los botones */
+    }
+}
+h1{
+        text-align: center;
+
+        color: rgb(255, 255, 255);
+    font-size: 1.5em;
+
+}
+label{
+    color: rgb(188, 188, 188);
+    font-size: 1em;
+}
+body{
+    background-color: #6c6c6c;
+
+}
