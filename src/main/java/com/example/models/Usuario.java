@@ -29,10 +29,10 @@ public class Usuario {
 	@Column(name = "telefono")
 	private String telefono;
 
-	@Column(name="fecha_registro")
+	@Column(name="fecha_registro", updatable = false, insertable=false ,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP" )
 	private LocalDateTime fecha_registro;
 
-	@Column(name="rol")
+	@Column(name="rol",updatable = false, insertable=false)
 	private String rol;
 
 	//Constructor
