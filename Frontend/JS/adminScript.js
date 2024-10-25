@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function showCrud(crudName) {
     // Ocultar todos los CRUDs
     document.querySelectorAll(".crud-content").forEach(div => {
-      console.log(div)
+      
         div.classList.add('hidden');
         const btn = div.querySelector('button');
         btn.classList.add('hidden');
         const table = div.querySelector('table');
-        console.log(table)
+        
         if (table) {
           table.classList.add('hidden');
       }
@@ -56,7 +56,7 @@ navMenu.addEventListener('click', (e) => {
       const crudName = clickedLink.dataset.crud;
    // Obtener el valor del atributo data-crud
       if(crudName) {
-        console.log(crudName)
+        
           // Mostrar el CRUD correspondiente
           showCrud(crudName);
 

@@ -136,18 +136,22 @@
 
 <!-- Add User Form -->
 
-<div class="flex justify-center items-center  hidden " id="modal-add-user">
+<div class="flex  justify-center items-center  hidden " id="modal-add-user">
+
 
     <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
 
+       
+    <button class="self-end right-0  text-white rounded-2xl  hover:opacity-60 ease-in-out duration-500 " id="cancel-add-user"><i class="fa-solid fa-x" style="color: #0a0a0a;"></i></button> 
+
 
     <form  class=" w-fullflex flex-col space-y-4 " id="newUserForm">
-        <h2 class="text-center font-semibold font-Roboto" >Añadir Usuario</h2>
+        <h2 class="text-center font-semibold " >Añadir Usuario</h2>
         
         <!-- <label for="userId">User Id:</label>
         <input class=" w-full border p-2 rounded-md  outline-none" type="number" id="userId" name="userId"  placeholder="Enter User Id">  -->
         
-        <label for="userName">Nombre:</label>
+        <label for="userName" class="font-semibold">Nombre:</label>
         <input class=" w-full border p-2 rounded-md" type="text" id="userName" name="userName" required>
         
         <label for="userPassword">Password:</label>
@@ -167,8 +171,8 @@
         </select>
 
         
-        <button type="submit" class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="enviarForm">Añadir Usuario</button>
-        <button class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="cancel-add-user">Cancelar</button>
+        <button type="submit" class="p-2 bg-black self-center text-white rounded-2xl  hover:opacity-60 ease-in-out duration-500 " id="enviarForm">Añadir Usuario</button>
+     
 
     </form>
 
@@ -224,6 +228,44 @@
 
 
 
+<!-- Add new  acc  -->
+
+<div class="flex justify-center items-center   hidden  " id="modal-add-acc">
+
+    <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
+       
+        <button class="self-end right-0  text-white rounded-2xl  hover:opacity-60 ease-in-out duration-500 " id="cancel-add-acc"><i class="fa-solid fa-x" style="color: #0a0a0a;"></i></button> 
+
+    <form  class=" w-fullflex flex-col space-y-4 " id="newAccForm">
+        <h2 class=" font-semibold  text-xl text-left text-red-600" >Añadir Cuenta Bancaria</h2>
+        
+        <!-- <label for="userId">User Id:</label>
+        <input class=" w-full border p-2 rounded-md  outline-none" type="number" id="userId" name="userId"  placeholder="Enter User Id">  -->
+        
+        <label for="user_id">Usuario Id:</label>
+        <input class=" w-full border p-2 rounded-md" type="number" id="user_id" name="userName" required>
+        
+        <label for="accountNumber">Numero de Cuenta </label>
+        <input class=" w-full border p-2 rounded-md" type="text" id="accountNumber" name="userPassword" required>
+        
+        <label for="userEmail">Estado:</label>
+        <input class=" w-full border p-2 rounded-md" type="number" id="accountState" name="accountState" required>
+        
+        <label for="userTelefono">Tipo Cuenta Id :</label>
+        <input class=" w-full border p-2 rounded-md" type="number" id="idAccType" name="idAccType" required>
+                
+      
+        <button type="submit" class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="enviarAccForm">Añadir Cuenta</button>
+        
+    </form>
+    </div>  
+
+</div>
+
+
+
+
+
 
 
 
@@ -236,7 +278,18 @@
 </div>
 
 
+<div class="flex justify-center items-center  hidden " id="modal-edit-acc">
+    <form  class=" w-fullflex flex-col space-y-4 " id="editAccForm">
+
+    </form>
+
+
+</div>
+
+
 <div class="flex justify-center items-center  hidden " id="modal-delete-user"></div>
+
+<div class="flex justify-center items-center  hidden " id="modal-delete-acc"></div>
 
  
 
