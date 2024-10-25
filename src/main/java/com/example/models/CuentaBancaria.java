@@ -25,12 +25,30 @@ public class CuentaBancaria {
 	private int estado_cuenta;
 
 
-	@Column(name = "fecha_apertura")
+	@Column(name = "fecha_apertura" , updatable = false, insertable=false ,columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime fecha_apertura;
 
 	@OneToOne
 	@JoinColumn(name = "tipo_cuenta_id")
 	private TipoCuenta tipo_cuenta;
+
+
+	//Constructores
+
+
+	public CuentaBancaria() {
+	}
+
+	public CuentaBancaria(long cuenta_id, TipoCuenta tipo_cuenta, LocalDateTime fecha_apertura, int estado_cuenta, String numero_cuenta, Usuario usuario_id) {
+		this.cuenta_id = cuenta_id;
+		this.tipo_cuenta = tipo_cuenta;
+		this.fecha_apertura = fecha_apertura;
+		this.estado_cuenta = estado_cuenta;
+		this.numero_cuenta = numero_cuenta;
+		this.usuario_id = usuario_id;
+	}
+
+
 
 	public long getCuenta_id() {
 		return cuenta_id;

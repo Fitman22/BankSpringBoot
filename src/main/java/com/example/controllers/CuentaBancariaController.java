@@ -17,18 +17,25 @@ public class CuentaBancariaController {
     private CuentaBancariaService cuentaBancariaService;
 
     // Crear una nueva cuenta bancaria
+
+    @CrossOrigin(origins = "*")
     @PostMapping("/crear")
     public ResponseEntity<CuentaBancaria> crearCuenta(@RequestBody CuentaBancaria cuentaBancaria) {
         CuentaBancaria nuevaCuenta = cuentaBancariaService.crearCuenta(cuentaBancaria);
         return ResponseEntity.ok(nuevaCuenta);
     }
 
+
+
+
     // Obtener todas las cuentas bancarias
+    @CrossOrigin(origins = "*")
     @GetMapping("/all")
     public ResponseEntity<List<CuentaBancaria>> obtenerTodasLasCuentas() {
         List<CuentaBancaria> cuentas = cuentaBancariaService.obtenerTodasLasCuentas();
         return ResponseEntity.ok(cuentas);
     }
+
 
     // Obtener una cuenta bancaria por ID
     @GetMapping("/{id}")
@@ -42,6 +49,7 @@ public class CuentaBancariaController {
     }
 
     // Actualizar una cuenta bancaria existente
+    @CrossOrigin(origins = "*")
     @PutMapping("/{id}")
     public ResponseEntity<CuentaBancaria> actualizarCuenta(@PathVariable Long id, @RequestBody CuentaBancaria cuentaActualizada) {
         CuentaBancaria cuenta = cuentaBancariaService.actualizarCuenta(id, cuentaActualizada);
@@ -52,7 +60,11 @@ public class CuentaBancariaController {
         }
     }
 
-    // Eliminar una cuenta bancaria
+
+
+
+
+    @CrossOrigin(origins="*")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminarCuenta(@PathVariable Long id) {
         boolean eliminada = cuentaBancariaService.eliminarCuenta(id);

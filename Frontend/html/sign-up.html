@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <!-- Tailwind output.css -->
+     <link rel="stylesheet" href="/Frontend/css/style.css">
+</head>
+<body class="flex justify-center h-screen items-center">
+    <div class="flex justify-center items-center  " id="modal-add-user">
+
+
+
+        <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
+    
+    
+    
+    
+    
+    
+    
+    
+        <form  class=" w-full flex flex-col space-y-4  text-left " id="signUpForm">
+            <h1 class="text-left font-Roboto text-4xl" >Sign Up</h1>
+            
+            <!-- <label for="userId">User Id:</label>
+            <input class=" w-full border p-2 rounded-md  outline-none" type="number" id="userId" name="userId"  placeholder="Enter User Id">  -->
+            
+            <label for="userName" class="text-gray-500 " >Nombre :</label>
+            <input class=" w-full border p-2 rounded-md" type="text" id="userName" name="userName" required>
+            
+            <label for="userPassword">Password:</label>
+            <input class=" w-full border p-2 rounded-md" type="password" id="userPassword" name="userPassword" required>
+            
+            <label for="userEmail">Email:</label>
+            <input class=" w-full border p-2 rounded-md" type="email" id="userEmail" name="userEmail" required>
+            
+            <label for="userTelefono">Teléfono:</label>
+            <input class=" w-full border p-2 rounded-md" type="tel" id="userTelefono" name="userTelefono" required>
+                    
+          
+    
+            
+            <button type="submit" class="p-2 bg-black text-white rounded-2xl w-full hover:opacity-60 ease-in-out duration-500 " id="enviarForm">Sing Up</button>
+            <p class="text-center">Already have an account?<a href="/Frontend/html/index.html"> Sign in</a></p>
+       
+    
+        </form> 
+    
+        </div>  
+        
+    
+    </div>
+
+
+    
+</body>
+<script src="/Frontend/JS/signUp.js"></script>
+</html>
