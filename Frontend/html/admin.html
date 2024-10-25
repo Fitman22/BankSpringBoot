@@ -21,37 +21,47 @@
 
 
 
-<nav class="p-3 p 6 flex w-full justify-center space-x-10 m-6">
-
-    <a href="" class="text-gray-600 hover:text-black text-lg ease-in-out duration-300 " id="usuarios">Usuarios</a>
-    <a href="" class="text-gray-600 hover:text-black text-lg  ease-in-out duration-300   " id="cuentas">Cuentas</a>
+<nav class="p-3 p 6 flex w-full justify-center space-x-10 m-6" id="nav-menu">
+    <a href="" class="text-gray-600 hover:text-black text-lg ease-in-out duration-300   " id="usuarios" data-crud="Usuarios">Usuarios</a>
+    <a href="" class="text-gray-600 hover:text-black text-lg  ease-in-out duration-300   " id="cuentas" data-crud="CuentasBancarias">Cuentas</a>
     <a href="" class="text-gray-600 text-lg  hover:text-black ease-in-out duration-300 ">Transacciones</a>
 </nav>
 
 
     
+     <!-- <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-user-btn">
+         
+        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
+        <span class="text-sm">Add new user</span>
+    </button>  -->
+
+
+ <!--    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-acc-btn">
+         
+        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
+        <span class="text-sm">Add new acc</span>
+    </button> -->
+
+
+<!-- User Table  -->
+
+   
+<div class="overflow-auto rounded-lg shadow m-5 hidden crud-content md:block " id="table-wrapper-Usuarios">
+
     <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-user-btn">
          
         <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
         <span class="text-sm">Add new user</span>
-    </button>
+    </button> 
 
-   <!--  <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5  hidden hover:opacity-70 " id="add-acc-btn">
-         
-        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
-        <span class="text-sm">Add new account</span>
-    </button> -->
-
-<div class="overflow-auto rounded-lg shadow m-5 hidden md:block " id="table-wrapper">
-
-    <table class="w-full  hidden " id="userTable">
-        <thead class="bg-gray-50 border-b-2 border-gray-200 " id="thead">
+    <table class="w-full  hidden " id="user-table">
+        <thead class="bg-gray-50 border-b-2 border-gray-200 " id="thead-user">
             
          
         </thead>
     
     
-        <tbody  class="divide-y divide-gray-100" id="tbody">
+        <tbody  class="divide-y divide-gray-100" id="tbody-user">
     
           
     
@@ -60,6 +70,37 @@
 
 
 </div >
+
+
+<!-- Accounts Table -->
+
+<div class="overflow-auto rounded-lg shadow m-5 hidden crud-content md:block  " id="table-wrapper-CuentasBancarias">
+
+    <button class="p-1 shadow-lg   flex  items-center  justify-center space-x-4 rounded-xl bg-black text-white w-[160px] m-5 hidden hover:opacity-70 " id="add-acc-btn">
+         
+        <i class="fa-solid fa-plus m-2" style="color: #ffffff;"></i>
+        <span class="text-sm">Add new acc</span>
+    </button>
+
+
+    <table class="w-full  hidden " id="accounts-table">
+        <thead class="bg-gray-50 border-b-2 border-gray-200 " id="thead-accounts">
+            
+         
+        </thead>
+    
+    
+        <tbody  class="divide-y divide-gray-100" id="tbody-accounts">
+    
+          
+    
+        </tbody >
+     </table>
+
+
+</div >
+
+
 
 
 <div class="grid grid-cols-1 gap-4 hidden md:hidden">
@@ -93,24 +134,68 @@
 
 
 
-<div class="flex justify-center items-center  hidden " id="modal-add-user">
+<!-- Add User Form -->
 
+<div class="flex  justify-center items-center  hidden " id="modal-add-user">
 
 
     <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
 
-
-
-
-
-
+       
+    <button class="self-end right-0  text-white rounded-2xl  hover:opacity-60 ease-in-out duration-500 " id="cancel-add-user"><i class="fa-solid fa-x" style="color: #0a0a0a;"></i></button> 
 
 
     <form  class=" w-fullflex flex-col space-y-4 " id="newUserForm">
-        <h2 class="text-center font-semibold font-Roboto" >Añadir Usuario</h2>
+        <h2 class="text-center font-semibold " >Añadir Usuario</h2>
         
         <!-- <label for="userId">User Id:</label>
         <input class=" w-full border p-2 rounded-md  outline-none" type="number" id="userId" name="userId"  placeholder="Enter User Id">  -->
+        
+        <label for="userName" class="font-semibold">Nombre:</label>
+        <input class=" w-full border p-2 rounded-md" type="text" id="userName" name="userName" required>
+        
+        <label for="userPassword">Password:</label>
+        <input class=" w-full border p-2 rounded-md" type="password" id="userPassword" name="userPassword" required>
+        
+        <label for="userEmail">Email:</label>
+        <input class=" w-full border p-2 rounded-md" type="email" id="userEmail" name="userEmail" required>
+        
+        <label for="userTelefono">Teléfono:</label>
+        <input class=" w-full border p-2 rounded-md" type="tel" id="userTelefono" name="userTelefono" required>
+                
+        <label for="userRole">Rol:</label>
+        <select class="w-full border p-2 rounded-md" id="userRole" name="userRole" required >
+            <option value="admin">ADMIN</option>
+            <option value="user">USER</option>
+            
+        </select>
+
+        
+        <button type="submit" class="p-2 bg-black self-center text-white rounded-2xl  hover:opacity-60 ease-in-out duration-500 " id="enviarForm">Añadir Usuario</button>
+     
+
+    </form>
+
+    </div>  
+
+
+    
+
+</div>
+
+
+<!-- edit user form  -->
+ 
+<!-- <div class="flex justify-center items-center  hidden " id="modal-edit-user">
+
+    <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
+
+
+    <form  class=" w-fullflex flex-col space-y-4 " id="editUserForm">
+        <h2 class="text-center font-semibold font-Roboto" >Añadir Usuario</h2>
+        
+        <label for="userId">User Id:</label>
+        <input class=" w-full border p-2 rounded-md  outline-none" type="number" id="userId" name="userId"  placeholder="Enter User Id">  
         
         <label for="userName">Nombre:</label>
         <input class=" w-full border p-2 rounded-md" type="text" id="userName" name="userName" required>
@@ -132,20 +217,82 @@
         </select>
 
         
-        <button type="submit" class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="enviarForm">Añadir Usuario</button>
+        <button type="submit" class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="editForm">Añadir Usuario</button>
         <button class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="cancel-add-user">Cancelar</button>
 
     </form>
 
     </div>  
-    
+
+</div> -->
+
+
+
+<!-- Add new  acc  -->
+
+<div class="flex justify-center items-center   hidden  " id="modal-add-acc">
+
+    <div class="flex flex-col m-10 space-y-5 z-40 bg-white shadow-2xl rounded-2xl  md:space-y-5  items-center justify-center  md:p-10 md:w-[400px]    " id="log-in-card">
+       
+        <button class="self-end right-0  text-white rounded-2xl  hover:opacity-60 ease-in-out duration-500 " id="cancel-add-acc"><i class="fa-solid fa-x" style="color: #0a0a0a;"></i></button> 
+
+    <form  class=" w-fullflex flex-col space-y-4 " id="newAccForm">
+        <h2 class=" font-semibold  text-xl text-left text-red-600" >Añadir Cuenta Bancaria</h2>
+        
+        <!-- <label for="userId">User Id:</label>
+        <input class=" w-full border p-2 rounded-md  outline-none" type="number" id="userId" name="userId"  placeholder="Enter User Id">  -->
+        
+        <label for="user_id">Usuario Id:</label>
+        <input class=" w-full border p-2 rounded-md" type="number" id="user_id" name="userName" required>
+        
+        <label for="accountNumber">Numero de Cuenta </label>
+        <input class=" w-full border p-2 rounded-md" type="text" id="accountNumber" name="userPassword" required>
+        
+        <label for="userEmail">Estado:</label>
+        <input class=" w-full border p-2 rounded-md" type="number" id="accountState" name="accountState" required>
+        
+        <label for="userTelefono">Tipo Cuenta Id :</label>
+        <input class=" w-full border p-2 rounded-md" type="number" id="idAccType" name="idAccType" required>
+                
+      
+        <button type="submit" class="p-2 bg-black text-white rounded-2xl  hover:opacity-60 " id="enviarAccForm">Añadir Cuenta</button>
+        
+    </form>
+    </div>  
 
 </div>
 
-<div class="flex justify-center items-center  hidden " id="modal-edit-user"></div>
+
+
+
+
+
+
+
+<div class="flex justify-center items-center  hidden " id="modal-edit-user">
+    <form  class=" w-fullflex flex-col space-y-4 " id="editUserForm">
+
+    </form>
+
+
+</div>
+
+
+<div class="flex justify-center items-center  hidden " id="modal-edit-acc">
+    <form  class=" w-fullflex flex-col space-y-4 " id="editAccForm">
+
+    </form>
+
+
+</div>
+
+
+<div class="flex justify-center items-center  hidden " id="modal-delete-user"></div>
+
+<div class="flex justify-center items-center  hidden " id="modal-delete-acc"></div>
 
  
 
 </body>
- <script src="/Frontend/JS/adminScript.js"></script>
+ <script src="/Frontend/JS/adminScript.js" > </script>
 </html>
