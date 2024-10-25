@@ -15,33 +15,31 @@ import org.springframework.web.bind.annotation.*;
 public class TransaccionController {
 
     @Autowired
-    private TransaccionService transaccionServicio;
-    @Autowired
     private TransaccionService transaccionService;
 
     // Obtener todas las transacciones
     @GetMapping("/transacciones")
     public List<Transaccion> listarTransacciones() {
-        return transaccionServicio.getTransacciones();
+        return transaccionService.getTransacciones();
     }
 
     // Obtener una transacción por ID
     @GetMapping("/transacciones/{id}")
     public Transaccion obtenerTransaccion(@PathVariable Long id) {
-        return transaccionServicio.getTransaccionById(id);
+        return transaccionService.getTransaccionById(id);
     }
 
     // Crear una nueva transacción
     @PostMapping("/transacciones/crear")
     public ResponseEntity<Transaccion> crearTransaccion(@RequestBody Transaccion transaccion) {
-        Transaccion nuevaTransaccion = transaccionServicio.crearTransaccion(transaccion);
+        Transaccion nuevaTransaccion = transaccionService.crearTransaccion(transaccion);
         return ResponseEntity.ok(nuevaTransaccion);
     }
     @PutMapping("/transacciones/actualizar/{id}")
     public ResponseEntity<Transaccion> actualizarTransaccion(
             @PathVariable Long id,
             @RequestBody Transaccion nuevaTransaccion) {
-        Transaccion transaccionActualizada = transaccionServicio.actualizarTransaccion(id, nuevaTransaccion);
+        Transaccion transaccionActualizada = transaccionService.actualizarTransaccion(id, nuevaTransaccion);
         if (transaccionActualizada != null) {
             return ResponseEntity.ok(transaccionActualizada);
         } else {
@@ -50,7 +48,7 @@ public class TransaccionController {
     }
     @DeleteMapping("/transacciones/eliminar/{id}")
     public ResponseEntity<Void> eliminarTransaccion(@PathVariable Long id) {
-        boolean eliminada = transaccionServicio.eliminarTransaccion(id);
+        boolean eliminada = transaccionService.eliminarTransaccion(id);
         if (eliminada) {
             return ResponseEntity.noContent().build();
         } else {
