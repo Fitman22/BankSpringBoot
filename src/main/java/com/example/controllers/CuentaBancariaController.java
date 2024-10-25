@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/cuentas")
+@CrossOrigin(origins = "http://localhost:8080")
 public class CuentaBancariaController {
 
     @Autowired
