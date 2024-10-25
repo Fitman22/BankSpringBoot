@@ -56,7 +56,7 @@ fetch('http://localhost:8094/login',{
     if(response.statusCode==200 && response.Usuario.rol=='ADMIN'){
         console.log(response)
         localStorage.setItem('userData',JSON.stringify(response))
-        window.location.href="/Frontend/html/admin.html" 
+        window.location.href="../html/admin.html"
 
     }
 

@@ -53,6 +53,7 @@ navMenu.addEventListener('click', (e) => {
   const clickedLink = e.target.closest('a');
    // Verificar si se hizo clic en un enlace
   if (clickedLink) {
+      console.log('clickeo un enlace');
       const crudName = clickedLink.dataset.crud;
    // Obtener el valor del atributo data-crud
       if(crudName) {
@@ -62,6 +63,10 @@ navMenu.addEventListener('click', (e) => {
 
           // Cargar el script correspondiente al CRUD seleccionado
           loadScript(`/Frontend/JS/crud${crudName}.js`);
+      }
+      else if (clickedLink.id === 'transacciones') {
+          // Redirigir a la página de transacciones
+          window.location.href = '../html/TransaccionesPage.html';
       }
   }
 });
