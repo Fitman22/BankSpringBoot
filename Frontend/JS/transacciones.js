@@ -117,7 +117,6 @@ function deleteTransaction(transaccionId) {
     Swal.fire({
         title: "Quieres eliminar la transacción?",
         showDenyButton: true,
-        showCancelButton: true,
         confirmButtonText: "Si",
         denyButtonText: `No`
     }).then((result) => {
