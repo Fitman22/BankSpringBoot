@@ -1,5 +1,4 @@
-// Función para cargar todas las transacciones
-// Función para cargar todas las transacciones
+
 function loadTransactions() {
     let request = sendRequest('transacciones', 'GET', '');
     let transactionsResult = document.getElementById('transactionsResult');
@@ -18,8 +17,8 @@ function loadTransactions() {
         <p><strong>Estado:</strong> ${transaction.estado ? 'Completada' : 'Pendiente'}</p>
         <p><strong>Descripción:</strong> ${transaction.descripcion || 'N/A'}</p>
         <p><strong>Fecha:</strong> ${new Date(transaction.fechaTransaccion).toLocaleString() || 'N/A'}</p>
-        <button onclick="editTransaction(${transaction.transaccionId}, ${transaction.monto},'${transaction.descripcion}', ${transaction.cuentaOrigen ? transaction.cuentaOrigen.cuenta_id : 'N/A'}, ${transaction.cuentaDestino ? transaction.cuentaDestino.cuenta_id : 'N/A'})">Editar</button>
-        <button class="delete" onclick="deleteTransaction(${transaction.transaccionId})">Eliminar</button>
+        <button type="button" onclick="editTransaction(${transaction.transaccionId}, ${transaction.monto},'${transaction.descripcion}', ${transaction.cuentaOrigen ? transaction.cuentaOrigen.cuenta_id : 'N/A'}, ${transaction.cuentaDestino ? transaction.cuentaDestino.cuenta_id : 'N/A'})">Editar</button>
+        <button type="button" class="delete" onclick="deleteTransaction(${transaction.transaccionId})">Eliminar</button>
         <hr>
     </div>
 `;
@@ -37,7 +36,13 @@ function editTransaction(transaccionId, monto, descripcion, cuentaOrigenId, cuen
     const transactionDiv = document.getElementById(`transaction-${transaccionId}`);
 
     if (!transactionDiv) {
-        console.error(`No se encontró la transacción con ID: ${transaccionId}`);
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "No se encontro la transacción",
+            showConfirmButton: false,
+            timer: 1800
+        });
         return;
     }
 
@@ -64,7 +69,13 @@ function submitEditTransaction(event) {
     const cuentaDestinoId = document.getElementById('editCuentaDestino').value;
 
     if (isNaN(nuevoMonto) || nuevoMonto <= 0) {
-        alert(nuevoMonto);
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Ingrese un Monto Valido",
+            showConfirmButton: false,
+            timer: 1800
+        });
         return;
     }
 
@@ -78,12 +89,24 @@ function submitEditTransaction(event) {
 
     let request = sendRequest(`transacciones/actualizar/${transaccionId}`, 'PUT', data)
     request.onload=function (){
-        alert('Transacción actualizada con éxito');
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Transacción Actualizada",
+            showConfirmButton: false,
+            timer: 1800
+        });
         loadTransactions(); // Recargar las transacciones
         document.getElementById('editTransactionContainer').style.display = 'none';
     }
     request.onerror = function(){
-        alert('No se pudo actualizar');
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "No se pudo Actualizar La transacción",
+            showConfirmButton: false,
+            timer: 1800
+        });
     }
 }
 
@@ -91,18 +114,41 @@ function submitEditTransaction(event) {
 
 // Función para eliminar una transacción
 function deleteTransaction(transaccionId) {
-    if (confirm('¿Estás seguro de que deseas eliminar esta transacción?')) {
-        sendRequest(`transacciones/eliminar/${transaccionId}`, 'DELETE', '')
-            .then(response => {
-                alert('Transacción eliminada con éxito');
-                loadTransactions(); // Recargar las transacciones para reflejar el cambio
-            })
-            .catch(error => {
-                alert('Error al eliminar la transacción: ' + error.message);
-                console.error(error);
-            });
-        loadTransactions();
-    }
+    Swal.fire({
+        title: "Quieres eliminar la transacción?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        denyButtonText: `No`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            let request = sendRequest(`transacciones/eliminar/${transaccionId}`, 'DELETE', '')
+            request.onload=function (){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Transacción Eliminada",
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+                loadTransactions(); // Recargar las transacciones
+                document.getElementById('editTransactionContainer').style.display = 'none';
+            }
+            request.onerror = function(){
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "No se pudo eliminar La transacción",
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+            }
+        } else if (result.isDenied) {
+            Swal.fire("No se elimino la transacción", "", "info");
+        }
+    });
+
 }
 
 // Función para crear una nueva transacción
@@ -117,7 +163,13 @@ function saveTransaction() {
     console.log("Valores capturados:", { monto, cuentaOrigenId, cuentaDestinoId, descripcion });
 
     if (isNaN(monto) || monto <= 0) {
-        alert(monto);
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Ingrese un Monto Valido",
+            showConfirmButton: false,
+            timer: 1800
+        });
         return;
     }
 
@@ -133,16 +185,27 @@ function saveTransaction() {
     //console.log("Datos que se enviarán:", JSON.stringify(data));
     //alert("Datos a enviar: " + JSON.stringify(data));
 
-    sendRequest('transacciones/crear', 'POST', data)
-        .then(response => {
-            alert('Transacción creada con éxito');
-            document.getElementById('createTransactionForm').reset();
-            loadTransactions();
-        })
-        .catch(error => {
-            alert('Error al crear la transacción: ' + error.message);
-            console.error(error);
-        });
+    let request = sendRequest('transacciones/crear', 'POST', data)
+    request.onload=function (){
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Transacción Creada",
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+                document.getElementById('createTransactionForm').reset();
+                loadTransactions();
+            }
+            request.onerror = function(){
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "No se pudo crear La transacción",
+                    showConfirmButton: false,
+                    timer: 1800
+                });
+            }
 }
 
 document.addEventListener('DOMContentLoaded', function() {

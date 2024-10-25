@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/FromTransacciones.css">
+    <script src="../JS/sweetalert2.min.js"></script>
+    <link href="../css/sweetalert2.css" rel="stylesheet">
     <title>Transacciones</title>
 </head>
 <body>
@@ -46,11 +48,11 @@
     <div class="view-container">
 
         <h1>Ver Transacciones</h1>
-        <button id="viewTransactionsButton" onclick="loadTransactions()" class="button6">Cargar Transacciones</button>
+        <button type="button" id="viewTransactionsButton" onclick="loadTransactions()" class="button6">Cargar Transacciones</button>
         <div id="transactionsResult" class="transactions-list"></div>
     </div>
 
-        <div class="form-container" id="editTransactionContainer" style="display: block;">
+        <div class="form-container" id="editTransactionContainer" style="display: none;">
             <h1>Editar Transaccion</h1>
             <div id="editTransactionForm" >
                 <label class="subtitles">ID:</label>
@@ -83,7 +85,8 @@
         </div>
     </div>
 </form>
-<script src="../JS/request.js"></script>
-<script src="../JS/transacciones.js"></script>
+
+<script  src="../JS/request.js"></script>
+<script  src="../JS/transacciones.js"></script>
 </body>
 </html>
