@@ -3,7 +3,7 @@
 function loadTransactions() {
     let request = sendRequest('transacciones', 'GET', '');
     let transactionsResult = document.getElementById('transactionsResult');
-    transactionsResult.innerHTML = ""; // Limpiar resultados previos
+    transactionsResult.innerHTML = "";
 
     request.onload = function() {
         let data = request.response;

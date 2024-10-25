@@ -15,9 +15,9 @@
 
 #heading {
     text-align: center;
-    margin: 2em;
+    margin: 1.2em;
     color: rgb(255, 255, 255);
-    font-size: 1.8em;
+    font-size: 2.2em;
 }
 
 .field {
@@ -32,12 +32,15 @@
     color: white;
     background-color: #171717;
     box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 .input-icon {
     height: 1.3em;
     width: 1.3em;
     fill: white;
+
 }
 
 .input-field {
@@ -46,6 +49,7 @@
     outline: none;
     width: 100%;
     color: #d3d3d3;
+
 }
 
 .form .btn {
@@ -146,8 +150,9 @@
 .mydict div {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 0.5rem;
-    justify-content: center;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+
 }
 
 .mydict input[type="radio"] {
@@ -200,7 +205,7 @@ label:last-child span {
 .transactions-list {
     max-height: 400px;
     overflow-y: auto;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(204, 204, 204, 0.51);
     padding: 10px;
     border-radius: 4px;
 }
@@ -217,17 +222,16 @@ label:last-child span {
 }
 
 .transaction:hover {
-    transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+    transform: translateY(-5px);
 }
 
-/* Estilo para el título de cada transacción */
 .transaction h3 {
     color: #ffffff; /* Color del texto */
     font-size: 1.2em; /* Tamaño del texto */
     margin-bottom: 7px; /* Separación inferior */
 }
 
-/* Estilo para los párrafos dentro de las transacciones */
+
 .transaction p {
     color: #d1d1d1; /* Color del texto */
     font-size: 1.2em; /* Tamaño del texto */
@@ -260,30 +264,33 @@ label:last-child span {
     color: white;
 }
 
-/* Estilo responsivo para pantallas más pequeñas */
+
 @media (max-width: 768px) {
     .transaction {
-        padding: 15px; /* Reducir el relleno en pantallas pequeñas */
+        padding: 15px;
     }
 
     .transaction h3 {
-        font-size: 1.2em; /* Reducir el tamaño del texto */
+        font-size: 1.2em;
     }
 
     .transaction button {
-        padding: 8px 16px; /* Reducir el tamaño de los botones */
+        padding: 8px 16px;
     }
 }
-h1{
+h1,.error{
         text-align: center;
-
         color: rgb(255, 255, 255);
     font-size: 1.5em;
-
 }
 label{
     color: rgb(188, 188, 188);
     font-size: 1em;
+}
+.subtitles{
+margin-left: 13px;
+    margin-top: 90px;
+    margin-bottom: 9em;
 }
 body{
     background-color: #6c6c6c;

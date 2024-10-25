@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/FromTransacciones.css">
-    <title>Title</title>
+    <title>Transacciones</title>
 </head>
 <body>
 <form class="form" id="createTransactionForm" onsubmit="saveTransaction(); return false;">
@@ -11,7 +11,7 @@
     <div class="content">
 
     <div class="form-container">
-        <h1>Crear Transaccion</h1>
+        <h1>Crear Transacción</h1>
     <div class="field">
 
         <input autocomplete="off" id="monto" placeholder="Monto" class="input-field" type="number">
@@ -25,7 +25,7 @@
     <div class="field">
         <input autocomplete="off" id="Descripcion"  placeholder="Descripción" class="input-field" type="text">
     </div>
-        <div class="field">
+        <div>
             <div class="mydict">
                 <div>
                     <label>
@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+
     <button type="submit" class="button6">Crear Transaccion</button>
     </div>
 
@@ -49,28 +50,29 @@
         <div id="transactionsResult" class="transactions-list"></div>
     </div>
 
-        <div class="form-container" id="editTransactionContainer" style="display:none;">
+        <div class="form-container" id="editTransactionContainer" style="display: block;">
             <h1>Editar Transaccion</h1>
             <div id="editTransactionForm" >
-                <label>ID:</label>
+                <label class="subtitles">ID:</label>
                 <div class="field">
 
-                    <input autocomplete="off" disabled id="editTransaccionId"  placeholder="Descripción" class="input-field"  type="text">
+                    <input autocomplete="off" disabled id="editTransaccionId"  placeholder="ID" class="input-field"  type="text">
                 </div>
-                <label>Cuenta Origen:</label>
+                <label class="subtitles">Monto:</label>
+                <div class="field">
+                    <input autocomplete="off" id="editMonto"  placeholder="Monto" class="input-field"  type="number">
+                </div>
+                <label class="subtitles">Cuenta Origen:</label>
                 <div class="field">
 
-                    <input autocomplete="off" id="editCuentaOrigen"  placeholder="Descripción" class="input-field"  type="text">
+                    <input autocomplete="off" id="editCuentaOrigen"  placeholder="Cuenta Origen" class="input-field"  type="text">
                 </div>
-                <label>Cuenta Destino:</label>
+                <label class="subtitles">Cuenta Destino:</label>
                 <div class="field">
-                    <input autocomplete="off" id="editCuentaDestino"  placeholder="Descripción" class="input-field"  type="text">
+                    <input autocomplete="off" id="editCuentaDestino"  placeholder="CUenta Destino" class="input-field"  type="text">
                 </div>
-                <label>Monto:</label>
-                <div class="field">
-                    <input autocomplete="off" id="editMonto"  placeholder="Descripción" class="input-field"  type="number">
-                </div>
-                <label>Descripción:</label>
+
+                <label class="subtitles">Descripción:</label>
                 <div class="field">
                     <input autocomplete="off" id="editDescripcion"  placeholder="Descripción" class="input-field"  type="text">
                 </div>
